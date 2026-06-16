@@ -1,0 +1,44 @@
+{
+  "brand": "Mikhtav",
+  "tagline": "Israeli letters, explained",
+  "eyebrow": "An olim handbook",
+  "language": "Language",
+  "loading": "Loading…",
+  "error": "Could not reach the server. Is the API running?",
+  "nav": {
+    "letters": "Letters",
+    "glossary": "Glossary",
+    "about": "About"
+  },
+  "letters": {
+    "indexTitle": "Common letters, by issuing authority",
+    "issuer": "Issued by",
+    "open": "Open"
+  },
+  "detail": {
+    "back": "← All letters",
+    "summary": "What is this",
+    "sections": "Section by section",
+    "action": "What to do",
+    "deadline": "Deadline",
+    "labelHe": "On the letter",
+    "explainer": "What it means",
+    "severity": {
+      "info": "Informational",
+      "warning": "Pay attention",
+      "critical": "Critical"
+    }
+  },
+  "glossary": {
+    "title": "Bureaucratic Hebrew, demystified",
+    "blurb": "Common terms you'll see on official letters, with a transliteration so you can pronounce them when phoning the office.",
+    "transliteration": "Transliteration",
+    "meaning": "Meaning",
+    "usage": "Note"
+  },
+  "about": {
+    "title": "About Mikhtav",
+    "body": "Mikhtav is an educational guide to common Israeli bureaucratic letters. It does not republish any government data and is not legal advice — verify your specific letter with the issuing authority."
+  },
+  "disclaimer": "Educational information only — verify your specific letter with the issuing authority."
+}

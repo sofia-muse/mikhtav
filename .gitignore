@@ -1,0 +1,28 @@
+# .NET
+bin/
+obj/
+*.user
+.vs/
+artifacts/
+*.dll
+*.pdb
+
+# EF / local db
+*.mdf
+*.ldf
+
+# Node / Vite
+node_modules/
+dist/
+.vite/
+
+# Local env / secrets
+.env
+.env.local
+*.local.json
+appsettings.*.local.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
