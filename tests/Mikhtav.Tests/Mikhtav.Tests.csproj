@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Mikhtav.Core\Mikhtav.Core.csproj" />
+    <ProjectReference Include="..\..\src\Mikhtav.Infrastructure\Mikhtav.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

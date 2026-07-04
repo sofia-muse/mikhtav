@@ -9,7 +9,18 @@ public record LetterDetailDto(
     string Issuer,
     string CategoryName,
     string Summary,
+    LetterGuidanceDto Guidance,
     IReadOnlyList<LetterSectionDto> Sections);
+
+public record LetterGuidanceDto(
+    string OverallSeverity,
+    string PrimaryNextStep,
+    string? DeadlineSummary,
+    bool NeedsDocuments,
+    string? AppliesWhen,
+    string? RecommendedChannel,
+    string? WhenToContactAuthority,
+    string? WhatToVerify);
 
 public record LetterSectionDto(
     int Order,

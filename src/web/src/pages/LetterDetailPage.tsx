@@ -46,6 +46,59 @@ export function LetterDetailPage() {
         <p className="letter-summary">{letter.summary}</p>
       </header>
 
+      <section className={`guidance-summary guidance-summary-${letter.guidance.overallSeverity}`}>
+        <div className="guidance-head">
+          <h2 className="section-list-title guidance-title">{t('detail.guidanceTitle')}</h2>
+          <span className={`severity-tag severity-tag-${letter.guidance.overallSeverity}`}>
+            {t(`detail.severity.${letter.guidance.overallSeverity}`)}
+          </span>
+        </div>
+
+        <p className="guidance-primary-step">{letter.guidance.primaryNextStep}</p>
+
+        <dl className="guidance-grid">
+          {letter.guidance.appliesWhen && (
+            <div className="guidance-card">
+              <dt>{t('detail.appliesWhen')}</dt>
+              <dd>{letter.guidance.appliesWhen}</dd>
+            </div>
+          )}
+
+          <div className="guidance-card">
+            <dt>{t('detail.deadlineSummary')}</dt>
+            <dd>{letter.guidance.deadlineSummary ?? t('detail.noFixedDeadline')}</dd>
+          </div>
+
+          <div className="guidance-card">
+            <dt>{t('detail.documents')}</dt>
+            <dd>{letter.guidance.needsDocuments ? t('detail.documentsYes') : t('detail.documentsNo')}</dd>
+          </div>
+
+          {letter.guidance.recommendedChannel && (
+            <div className="guidance-card">
+              <dt>{t('detail.recommendedChannel')}</dt>
+              <dd>{letter.guidance.recommendedChannel}</dd>
+            </div>
+          )}
+
+          {letter.guidance.whenToContactAuthority && (
+            <div className="guidance-card">
+              <dt>{t('detail.contactAuthority')}</dt>
+              <dd>{letter.guidance.whenToContactAuthority}</dd>
+            </div>
+          )}
+
+          {letter.guidance.whatToVerify && (
+            <div className="guidance-card">
+              <dt>{t('detail.verify')}</dt>
+              <dd>{letter.guidance.whatToVerify}</dd>
+            </div>
+          )}
+        </dl>
+
+        <p className="guidance-reminder">{t('detail.verifyReminder', { issuer: letter.issuer })}</p>
+      </section>
+
       <h2 className="section-list-title">{t('detail.sections')}</h2>
 
       <ol className="section-list">

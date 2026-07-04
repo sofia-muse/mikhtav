@@ -6,6 +6,11 @@ export interface LetterTypeSummary {
   name: string
   nameHe: string
   summary: string
+  triageHint: string | null
+  severity: 'info' | 'warning' | 'critical'
+  hasActionRequired: boolean
+  hasDeadline: boolean
+  commonRank: number | null
 }
 
 export interface Category {
@@ -33,7 +38,19 @@ export interface LetterDetail {
   issuer: string
   categoryName: string
   summary: string
+  guidance: LetterGuidance
   sections: LetterSection[]
+}
+
+export interface LetterGuidance {
+  overallSeverity: 'info' | 'warning' | 'critical'
+  primaryNextStep: string
+  deadlineSummary: string | null
+  needsDocuments: boolean
+  appliesWhen: string | null
+  recommendedChannel: string | null
+  whenToContactAuthority: string | null
+  whatToVerify: string | null
 }
 
 export interface GlossaryTerm {
