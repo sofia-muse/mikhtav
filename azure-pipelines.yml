@@ -1,0 +1,79 @@
+# Azure DevOps pipeline: build, test, and deploy Mikhtav API to App Service.
+# Set these variables in the pipeline UI (Pipelines → Edit → Variables) or a variable group:
+#   azureServiceConnection — name of your ARM service connection (e.g. mikhtav-azure-prod)
+#   webAppName             — App Service name (e.g. mikhtav-api)
+#   webAppType             — webAppLinux (default) or webApp for Windows App Service
+
+trigger:
+  branches:
+    include:
+      - main
+
+variables:
+  buildConfiguration: Release
+  dotnetVersion: 8.0.x
+  webAppType: webAppLinux
+
+stages:
+  - stage: Build
+    displayName: Build and test
+    jobs:
+      - job: BuildAndTest
+        displayName: Build and test
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - checkout: self
+
+          - task: UseDotNet@2
+            displayName: Use .NET SDK
+            inputs:
+              packageType: sdk
+              version: $(dotnetVersion)
+
+          - script: dotnet tool restore
+            displayName: Restore dotnet tools
+
+          - script: dotnet restore
+            displayName: Restore packages
+
+          - script: dotnet build --no-restore -c $(buildConfiguration)
+            displayName: Build
+
+          - script: dotnet test --no-build -c $(buildConfiguration) --verbosity normal
+            displayName: Test
+
+          - script: dotnet publish src/Mikhtav.Api -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)/api
+            displayName: Publish API
+
+          - task: PublishPipelineArtifact@1
+            displayName: Publish API artifact
+            inputs:
+              targetPath: $(Build.ArtifactStagingDirectory)/api
+              artifact: api
+              publishLocation: pipeline
+
+  - stage: Deploy
+    displayName: Deploy to App Service
+    dependsOn: Build
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - deployment: DeployApi
+        displayName: Deploy API
+        pool:
+          vmImage: ubuntu-latest
+        environment: production
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: api
+
+                - task: AzureWebApp@1
+                  displayName: Deploy to Azure App Service
+                  inputs:
+                    azureSubscription: $(azureServiceConnection)
+                    appType: $(webAppType)
+                    appName: $(webAppName)
+                    package: $(Pipeline.Workspace)/api

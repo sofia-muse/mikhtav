@@ -10,12 +10,15 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
-// Allow the Vite dev server origin during development.
 const string SpaCors = "spa";
-builder.Services.AddCors(o => o.AddPolicy(SpaCors, p => p
-    .WithOrigins("http://localhost:5173")
-    .AllowAnyHeader()
-    .AllowAnyMethod()));
+var corsOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
+    ?? Array.Empty<string>();
+builder.Services.AddCors(o => o.AddPolicy(SpaCors, p =>
+{
+    if (corsOrigins.Length > 0)
+        p.WithOrigins(corsOrigins);
+    p.AllowAnyHeader().AllowAnyMethod();
+}));
 
 var app = builder.Build();
 
