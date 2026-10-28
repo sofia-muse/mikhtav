@@ -7,7 +7,12 @@
       {
         "url": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/work_period_authorizations/Pages/default.aspx",
         "title": "ביטוח לאומי — תקופות עבודה",
-        "scope": "Describes the insurance-period and employer certificate. Supports checking recorded periods; does not establish the exact fields or benefit eligibility of every insurance confirmation."
+        "scope": "Describes the insurance-period and employer certificate. Supports checking recorded periods; does not establish the exact fields or benefit eligibility of every insurance confirmation.",
+        "scopeTranslations": {
+          "ru": "Описывает справку о периодах страхования и работодателях. Помогает проверить учтённые периоды; не подтверждает точный состав полей или право на пособия для любого вида страховой справки.",
+          "he": "מתאר את האישור על תקופות ביטוח ומעסיקים. מסייע בבדיקת התקופות הרשומות; אינו קובע מהם השדות המדויקים או תנאי הזכאות לקצבאות בכל סוג של אישור ביטוח.",
+          "uk": "Описує довідку про періоди страхування та роботодавців. Допомагає перевірити враховані періоди; не підтверджує точний склад полів або право на допомогу для кожного виду страхової довідки."
+        }
       }
     ]
   },
@@ -19,7 +24,12 @@
       {
         "url": "https://www.gov.il/BlobFolder/generalpage/income-tax-guide-knowyourright/he/Guides_IncomeTax_da-2024.pdf",
         "title": "רשות המסים — דע את זכויותיך וחובותיך 2024",
-        "scope": "Official explanatory guide covering assessments and refunds. Used for general document concepts only; no historical rate or filing deadline is applied to the reader’s notice."
+        "scope": "Official explanatory guide covering assessments and refunds. Used for general document concepts only; no historical rate or filing deadline is applied to the reader’s notice.",
+        "scopeTranslations": {
+          "ru": "Официальное пояснительное руководство о налоговых расчётах и возвратах. Используется только для объяснения общих понятий в документах; исторические ставки и сроки подачи не переносятся на уведомление читателя.",
+          "he": "מדריך הסבר רשמי בנושא שומות והחזרים. משמש להסבר מושגים כלליים במסמכים בלבד; שיעורים או מועדי הגשה היסטוריים אינם מוחלים על ההודעה שקיבל הקורא.",
+          "uk": "Офіційний пояснювальний посібник щодо податкових розрахунків і повернень. Використовується лише для пояснення загальних понять у документах; історичні ставки та строки подання не переносяться на повідомлення читача."
+        }
       }
     ]
   },
@@ -31,12 +41,22 @@
       {
         "url": "https://www.btl.gov.il/Insurance/payments/Pages/default.aspx",
         "title": "ביטוח לאומי — חוב בדמי ביטוח",
-        "scope": "Explains contribution debt, potential additional charges, contacting a branch and payment arrangements. Benefit-overpayment cases may follow different procedures."
+        "scope": "Explains contribution debt, potential additional charges, contacting a branch and payment arrangements. Benefit-overpayment cases may follow different procedures.",
+        "scopeTranslations": {
+          "ru": "Объясняет задолженность по взносам, возможные дополнительные начисления, обращение в отделение и порядок урегулирования платежей. Для возврата излишне выплаченного пособия могут действовать другие процедуры.",
+          "he": "מסביר חוב בדמי ביטוח, חיובים נוספים אפשריים, פנייה לסניף והסדרי תשלום. במקרים של קצבה ששולמה ביתר עשויים לחול הליכים אחרים.",
+          "uk": "Пояснює заборгованість за внесками, можливі додаткові нарахування, звернення до відділення та врегулювання платежів. Для повернення надміру виплаченої допомоги можуть діяти інші процедури."
+        }
       },
       {
         "url": "https://www.btl.gov.il/Insurance/payments/Pages/chovatsmaLoved.aspx",
         "title": "ביטוח לאומי — חובות עובדים עצמאיים ומי שאינם עובדים",
-        "scope": "Lists official contribution-debt payment channels and notes that instalments carry interest; terms depend on the case."
+        "scope": "Lists official contribution-debt payment channels and notes that instalments carry interest; terms depend on the case.",
+        "scopeTranslations": {
+          "ru": "Перечисляет официальные способы оплаты задолженности по взносам и указывает, что рассрочка предусматривает проценты; условия зависят от конкретного случая.",
+          "he": "מפרט ערוצי תשלום רשמיים לחוב בדמי ביטוח ומציין שתשלום בתשלומים נושא ריבית; התנאים תלויים במקרה.",
+          "uk": "Перелічує офіційні способи сплати боргу за внесками й зазначає, що розстрочення передбачає проценти; умови залежать від конкретного випадку."
+        }
       }
     ]
   },
@@ -48,7 +68,12 @@
       {
         "url": "https://www.btl.gov.il/About/faq/TroubleShooting/FaqDoc/Pages/%D7%90%D7%99%D7%9A-%D7%A0%D7%99%D7%AA%D7%9F-%D7%9C%D7%A9%D7%9C%D7%95%D7%97-%D7%9C%D7%9B%D7%9D-%D7%9E%D7%A1%D7%9E%D7%9B%D7%99%D7%9D.aspx",
         "title": "ביטוח לאומי — איך ניתן לשלוח לכם מסמכים?",
-        "scope": "Explains document upload and personal-area submission. A specific request controls the document list and deadline; some documents require originals."
+        "scope": "Explains document upload and personal-area submission. A specific request controls the document list and deadline; some documents require originals.",
+        "scopeTranslations": {
+          "ru": "Объясняет загрузку документов и подачу через личный кабинет. Перечень документов и срок определяются конкретным запросом; для некоторых документов нужны оригиналы.",
+          "he": "מסביר העלאת מסמכים והגשה דרך האתר האישי. רשימת המסמכים והמועד נקבעים בבקשה המסוימת; לחלק מהמסמכים נדרש מקור.",
+          "uk": "Пояснює завантаження документів і подання через особистий кабінет. Перелік документів і строк визначаються конкретним запитом; для деяких документів потрібні оригінали."
+        }
       }
     ]
   },
@@ -60,7 +85,12 @@
       {
         "url": "https://www.gov.il/he/service/itc135",
         "title": "רשות המסים — בקשה להחזר מס (טופס 135)",
-        "scope": "Official service information on income evidence, bank-account verification, assessment notices and refund transfers. Indexed official-page content was checked; direct automated opening returned HTTP 403. This is background for refund and income-document guidance, not validation of an individual notice."
+        "scope": "Official service information on income evidence, bank-account verification, assessment notices and refund transfers. Indexed official-page content was checked; direct automated opening returned HTTP 403. This is background for refund and income-document guidance, not validation of an individual notice.",
+        "scopeTranslations": {
+          "ru": "Официальная информация об услуге: подтверждения дохода, проверка банковского счёта, уведомления о налоговом расчёте и перечисление возврата. Проверено индексированное содержимое официальной страницы; прямое автоматизированное открытие вернуло HTTP 403. Это справочная основа для объяснения возврата и документов о доходах, а не проверка конкретного уведомления.",
+          "he": "מידע רשמי על השירות: אסמכתאות להכנסה, אימות חשבון בנק, הודעות שומה והעברת החזר. נבדק תוכן מאונדקס של הדף הרשמי; פתיחה אוטומטית ישירה החזירה HTTP 403. זהו רקע להסברים על החזרים ומסמכי הכנסה, ולא אימות של הודעה מסוימת.",
+          "uk": "Офіційна інформація про послугу: підтвердження доходу, перевірка банківського рахунку, повідомлення про податковий розрахунок і переказ повернення. Перевірено індексований вміст офіційної сторінки; пряме автоматизоване відкриття повернуло HTTP 403. Це довідкова основа для пояснення повернення й документів про доходи, а не перевірка конкретного повідомлення."
+        }
       }
     ]
   },
@@ -72,7 +102,12 @@
       {
         "url": "https://www.gov.il/he/service/itc135",
         "title": "רשות המסים — בקשה להחזר מס (טופס 135)",
-        "scope": "Official service information on income evidence, bank-account verification, assessment notices and refund transfers. Indexed official-page content was checked; direct automated opening returned HTTP 403. This is background for refund and income-document guidance, not validation of an individual notice."
+        "scope": "Official service information on income evidence, bank-account verification, assessment notices and refund transfers. Indexed official-page content was checked; direct automated opening returned HTTP 403. This is background for refund and income-document guidance, not validation of an individual notice.",
+        "scopeTranslations": {
+          "ru": "Официальная информация об услуге: подтверждения дохода, проверка банковского счёта, уведомления о налоговом расчёте и перечисление возврата. Проверено индексированное содержимое официальной страницы; прямое автоматизированное открытие вернуло HTTP 403. Это справочная основа для объяснения возврата и документов о доходах, а не проверка конкретного уведомления.",
+          "he": "מידע רשמי על השירות: אסמכתאות להכנסה, אימות חשבון בנק, הודעות שומה והעברת החזר. נבדק תוכן מאונדקס של הדף הרשמי; פתיחה אוטומטית ישירה החזירה HTTP 403. זהו רקע להסברים על החזרים ומסמכי הכנסה, ולא אימות של הודעה מסוימת.",
+          "uk": "Офіційна інформація про послугу: підтвердження доходу, перевірка банківського рахунку, повідомлення про податковий розрахунок і переказ повернення. Перевірено індексований вміст офіційної сторінки; пряме автоматизоване відкриття повернуло HTTP 403. Це довідкова основа для пояснення повернення й документів про доходи, а не перевірка конкретного повідомлення."
+        }
       }
     ]
   },
@@ -84,12 +119,22 @@
       {
         "url": "https://www.gov.il/he/service/application-for-biometric-passport-or-idcard",
         "title": "רשות האוכלוסין — בקשה לדרכון או לתעודת זהות ביומטריים",
-        "scope": "Explains appointment and digital-service-station application routes for eligible cases. Indexed official-page content was checked; direct automated opening returned HTTP 403. Eligibility and current document requirements must be checked on the official service."
+        "scope": "Explains appointment and digital-service-station application routes for eligible cases. Indexed official-page content was checked; direct automated opening returned HTTP 403. Eligibility and current document requirements must be checked on the official service.",
+        "scopeTranslations": {
+          "ru": "Объясняет запись на приём и подачу заявления на цифровых стойках обслуживания для подходящих случаев. Проверено индексированное содержимое официальной страницы; прямое автоматизированное открытие вернуло HTTP 403. Условия доступа к услуге и актуальный перечень документов необходимо проверить на официальной странице услуги.",
+          "he": "מסביר זימון תור והגשת בקשה בעמדות שירות דיגיטליות למקרים הזכאים לכך. נבדק תוכן מאונדקס של הדף הרשמי; פתיחה אוטומטית ישירה החזירה HTTP 403. יש לבדוק בשירות הרשמי את תנאי הזכאות ואת דרישות המסמכים העדכניות.",
+          "uk": "Пояснює запис на прийом і подання заяви на цифрових стійках обслуговування для відповідних випадків. Перевірено індексований вміст офіційної сторінки; пряме автоматизоване відкриття повернуло HTTP 403. Умови доступу до послуги та актуальний перелік документів потрібно перевірити на офіційній сторінці послуги."
+        }
       },
       {
         "url": "https://www.gov.il/he/pages/news-idexp-201125",
         "title": "רשות האוכלוסין — גם לתעודת הזהות יש תוקף",
-        "scope": "Official reminder to check ID expiry and available renewal routes; does not set a universal renewal deadline for every ID."
+        "scope": "Official reminder to check ID expiry and available renewal routes; does not set a universal renewal deadline for every ID.",
+        "scopeTranslations": {
+          "ru": "Официальное напоминание проверить срок действия удостоверения и доступные способы продления; не устанавливает единый срок продления для всех удостоверений.",
+          "he": "תזכורת רשמית לבדוק את תוקף תעודת הזהות ואת דרכי החידוש הזמינות; אינה קובעת מועד חידוש אחיד לכל התעודות.",
+          "uk": "Офіційне нагадування перевірити строк дії посвідчення та доступні способи поновлення; не встановлює єдиного строку поновлення для всіх посвідчень."
+        }
       }
     ]
   }

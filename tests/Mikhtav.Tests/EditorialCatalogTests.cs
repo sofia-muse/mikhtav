@@ -12,6 +12,7 @@ public class EditorialCatalogTests
     [InlineData("he")]
     [InlineData("ru-RU")]
     [InlineData("uk")]
+    [InlineData("fr")]
     public void Published_letters_keep_section_identity_and_have_complete_editorial_content(string language)
     {
         foreach (var seed in SeedData.LetterTypes)
@@ -34,6 +35,16 @@ public class EditorialCatalogTests
             Assert.NotEmpty(localized.Editorial!.Sources);
             Assert.All(localized.Editorial.Sources, source => Assert.StartsWith("https://", source.Url));
         }
+    }
+
+    [Fact]
+    public void Missing_category_translation_is_not_marked_complete()
+    {
+        var detail = new LetterDetailDto(1, "ishur-bituach", "fallback", "אישור", "issuer", "category", "summary",
+            new LetterGuidanceDto("info", "fallback", null, false, null, null, null, null),
+            SeedData.Sections.Where(s => s.LetterTypeId == 1).Select(s => new LetterSectionDto(
+                s.OrderIndex, s.LabelHe, s.ExplainerEn, s.ActionRequiredEn, s.Deadline, "info")).ToList());
+        Assert.False(EditorialCatalog.Localize(detail, "untranslated-category", "ru").TranslationComplete);
     }
 
     [Fact]

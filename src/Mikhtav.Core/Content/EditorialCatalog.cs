@@ -22,7 +22,7 @@ public static class EditorialCatalog
     public static string NormalizeLanguage(string language)
     {
         var code = language.Split('-', '_')[0].ToLowerInvariant();
-        return code == "ua" ? "uk" : code;
+        return code switch { "ua" => "uk", "en" or "he" or "ru" or "uk" => code, _ => "en" };
     }
 
     public static CategoryDto Localize(CategoryDto category, string language)
@@ -80,8 +80,14 @@ public static class EditorialCatalog
             },
             Editorial = Provenance.GetValueOrDefault(letter.Slug),
             TranslationComplete = translation is not null &&
+                (lang == "en" || category is not null) &&
+                new[] { translation.Name, translation.Summary, translation.PrimaryNextStep,
+                    translation.AppliesWhen, translation.RecommendedChannel,
+                    translation.WhenToContactAuthority, translation.WhatToVerify }
+                    .All(value => !string.IsNullOrWhiteSpace(value)) &&
                 sections.Count == translation.Sections.Count &&
-                letter.Sections.All(s => translation.Sections.Any(t => t.Order == s.Order))
+                letter.Sections.All(s => translation.Sections.Any(t => t.Order == s.Order &&
+                    !string.IsNullOrWhiteSpace(t.Explainer)))
         };
     }
 
@@ -107,4 +113,7 @@ public static class EditorialCatalog
 }
 
 public record EditorialProvenance(string Slug, string Version, string SourceCheckedOn, IReadOnlyList<EditorialSource> Sources);
-public record EditorialSource(string Url, string Title, string Scope);
+public record EditorialSource(string Url, string Title, string Scope)
+{
+    public IReadOnlyDictionary<string, string>? ScopeTranslations { get; init; }
+}

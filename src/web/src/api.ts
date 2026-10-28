@@ -31,7 +31,7 @@ export interface LetterSection {
 }
 
 export interface LetterDetail {
-  editorial?: { version: string; sourceCheckedOn: string; sources: { url: string; title: string; scope: string }[] } | null
+  editorial?: { version: string; sourceCheckedOn: string; sources: { url: string; title: string; scope: string; scopeTranslations?: Record<string, string> }[] } | null
   translationComplete?: boolean
   id: number
   slug: string

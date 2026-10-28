@@ -32,6 +32,7 @@ for (const lang of locales) {
         const url = new URL(source.url)
         assert.ok(url.protocol === 'https:' && (url.hostname === 'gov.il' || url.hostname.endsWith('.gov.il')))
         assert.ok(nonempty(source.scope) && nonempty(source.title))
+        if (lang !== 'en') assert.ok(nonempty(source.scopeTranslations?.[lang]), `${lang}: source scope translation`)
       }
     }
   }

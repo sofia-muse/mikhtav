@@ -19,7 +19,7 @@ export function EditorialSources({ letter }: { letter: LetterDetail }) {
     {letter.translationComplete === false && language !== 'en' && <p className="translation-notice">{t.fallback}</p>}
     {editorial && <>
       <dl><div><dt>{t.version}</dt><dd>{editorial.version}</dd></div><div><dt>{t.checked}</dt><dd><time dateTime={editorial.sourceCheckedOn}>{new Intl.DateTimeFormat(language, { dateStyle: 'long' }).format(new Date(`${editorial.sourceCheckedOn}T12:00:00Z`))}</time></dd></div></dl>
-      <ul>{editorial.sources.filter(source => { try { const url = new URL(source.url); return url.protocol === 'https:' && (url.hostname === 'gov.il' || url.hostname.endsWith('.gov.il')); } catch { return false } }).map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{t.source}: <bdi>{source.title}</bdi></a></li>)}</ul>
+      <ul>{editorial.sources.filter(source => { try { const url = new URL(source.url); return url.protocol === 'https:' && (url.hostname === 'gov.il' || url.hostname.endsWith('.gov.il')); } catch { return false } }).map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{t.source}: <bdi>{source.title}</bdi></a><p lang={language === 'en' || source.scopeTranslations?.[language] ? language : 'en'}>{source.scopeTranslations?.[language] ?? source.scope}</p></li>)}</ul>
     </>}
     <p>{t.note}</p>
   </aside>
