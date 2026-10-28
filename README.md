@@ -54,6 +54,40 @@ flowchart LR
 
 ---
 
+## Public product workflow
+
+The public catalog includes a three-step letter finder (sender, original Hebrew heading,
+possible guides), a per-letter checklist and an official-source panel. The finder compares
+catalog headings; it does not authenticate notices or determine personal obligations.
+No personal documents are uploaded. Checklist progress lives in browser storage, keyed by
+letter slug and editorial version, and is invalidated when the action content changes.
+Printing produces a concise task list. Storage denial falls back to in-memory progress.
+
+### Editorial architecture
+
+`src/Mikhtav.Core/Content/translations.json` stores normalized language records separately
+from structural letter identities in SeedData. `EditorialCatalog` applies these records to
+the existing LetterService DTOs in both API responses and generated snapshots. Intentional
+null actions/deadlines suppress outdated seed text. This avoids adding database columns per
+language and creates a seam for a later editorial CMS. It is currently a versioned file
+catalog, not a database-backed admin system.
+
+`provenance.json` records each letter's version, official sources, source coverage and the date
+the links/content were checked. This date is not an independent legal or professional
+translation review. Some GOV pages blocked direct retrieval; provenance scopes document
+where official indexed content was used. Explanations are educational, and the reader must
+check their own notice for dates, amounts and applicable instructions.
+
+After changing content, run the exporter and `node tools/verify-catalog.mjs` from the repository
+root. The validator checks all four locale snapshots, section identity, completeness, index/detail
+parity and official-source metadata. Bump a letter's editorial version when its actions change.
+Frontend features live under `src/web/src/features/`; each owns behavior, styles and tests.
+
+Project skills are in `.agents/skills/mikhtav-content` and `.agents/skills/mikhtav-release`;
+reusable editor and UI-reviewer agent definitions are in `.cursor/agents/`.
+The next stage is an authenticated editor with drafts/review/publish, a persistent translation
+repository and server hosting; those services are not provisioned by this public release.
+
 ## Running it
 
 ### Vercel / standalone catalog

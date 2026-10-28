@@ -10,7 +10,11 @@ public record LetterDetailDto(
     string CategoryName,
     string Summary,
     LetterGuidanceDto Guidance,
-    IReadOnlyList<LetterSectionDto> Sections);
+    IReadOnlyList<LetterSectionDto> Sections)
+{
+    public Mikhtav.Core.Content.EditorialProvenance? Editorial { get; init; }
+    public bool TranslationComplete { get; init; }
+}
 
 public record LetterGuidanceDto(
     string OverallSeverity,

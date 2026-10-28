@@ -32,7 +32,7 @@ export function GlossaryPage() {
   return (
     <>
       <header className="page-head">
-        <h2 className="page-title">{t('glossary.title')}</h2>
+        <h1 className="page-title">{t('glossary.title')}</h1>
         <p className="page-blurb">{t('glossary.blurb')}</p>
       </header>
       <section className="catalog-search">

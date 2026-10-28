@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using Mikhtav.Core.Abstractions;
 using Mikhtav.Core.Dtos;
 using Mikhtav.Core.Models;
+using Mikhtav.Core.Content;
 
 namespace Mikhtav.Core.Services;
 
@@ -31,6 +32,7 @@ public class LetterService : ILetterService
 
     public async Task<IReadOnlyList<CategoryDto>> GetIndexAsync(string lang, CancellationToken ct = default)
     {
+        lang = EditorialCatalog.NormalizeLanguage(lang);
         var categories = await _repo.GetCategoriesWithLettersAsync(ct);
         var index = categories
             .OrderBy(c => c.OrderIndex)
@@ -50,11 +52,12 @@ public class LetterService : ILetterService
             lang.ToLowerInvariant(),
             index.Count);
 
-        return index;
+        return index.Select(category => EditorialCatalog.Localize(category, lang)).ToList();
     }
 
     public async Task<LetterDetailDto?> GetLetterBySlugAsync(string slug, string lang, CancellationToken ct = default)
     {
+        lang = EditorialCatalog.NormalizeLanguage(lang);
         var letter = await _repo.GetLetterBySlugAsync(slug, ct);
         if (letter is null)
         {
@@ -93,11 +96,12 @@ public class LetterService : ILetterService
             lang.ToLowerInvariant(),
             detail.Sections.Count);
 
-        return detail;
+        return EditorialCatalog.Localize(detail, letter.Category?.Slug ?? "", lang);
     }
 
     public async Task<IReadOnlyList<GlossaryTermDto>> GetGlossaryAsync(string lang, CancellationToken ct = default)
     {
+        lang = EditorialCatalog.NormalizeLanguage(lang);
         var terms = await _repo.GetGlossaryAsync(ct);
         var glossary = terms
             .OrderBy(t => t.OrderIndex)
@@ -114,7 +118,7 @@ public class LetterService : ILetterService
             lang.ToLowerInvariant(),
             glossary.Count);
 
-        return glossary;
+        return glossary.Select(term => EditorialCatalog.Localize(term, lang)).ToList();
     }
 
     private static string PickName(LetterCategory c, string lang) => lang.ToLowerInvariant() switch

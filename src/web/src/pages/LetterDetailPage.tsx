@@ -2,6 +2,8 @@ import { useEffect, useState, type CSSProperties } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { fetchLetter, type LetterDetail } from '../api'
+import { LetterChecklist } from '../features/checklist/LetterChecklist'
+import { EditorialSources } from '../features/editorial/EditorialSources'
 
 export function LetterDetailPage() {
   const { t, i18n } = useTranslation()
@@ -129,6 +131,8 @@ export function LetterDetailPage() {
           </li>
         ))}
       </ol>
+      <LetterChecklist key={letter.slug} letter={letter} />
+      <EditorialSources letter={letter} />
     </article>
   )
 }

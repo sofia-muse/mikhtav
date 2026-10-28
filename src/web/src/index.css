@@ -170,7 +170,7 @@ header {
   box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px var(--accent);
 }
 
-h1.masthead-title {
+.masthead-title {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 600;

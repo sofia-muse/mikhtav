@@ -94,6 +94,7 @@ export function LettersIndexPage() {
 
   return (
     <>
+      <section className="finder-entry"><Link to="/find">{t('finderEntry.title')} →</Link><p>{t('finderEntry.body')}</p></section>
       <section className="catalog-search" aria-label={t('search.label')}>
         <label htmlFor="letter-search">{t('search.label')}</label>
         <input id="letter-search" type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder={t('search.placeholder')} />
@@ -102,9 +103,9 @@ export function LettersIndexPage() {
         {(query || actionOnly) && <button type="button" onClick={() => { setQuery(''); setActionOnly(false) }}>{t('search.clear')}</button>}
       </section>
       {count === 0 && <p className="search-empty">{t('search.empty')}</p>}
-      <p className="results-meta">
+      <h1 className="results-meta">
         <span>{t('letters.indexTitle')}</span>
-      </p>
+      </h1>
 
       {commonLetters.length > 0 && (
         <section className="common-letters">

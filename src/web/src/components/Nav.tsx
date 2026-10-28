@@ -12,7 +12,7 @@ export function Nav() {
           <span className="dot" aria-hidden="true" />
           {t('eyebrow')}
         </span>
-        <h1 className="masthead-title">{t('brand')}</h1>
+        <p className="masthead-title">{t('brand')}</p>
         <p className="masthead-subtitle">{t('tagline')}</p>
       </div>
 
@@ -20,6 +20,7 @@ export function Nav() {
         <LanguageSwitcher />
         <nav className="nav-links" aria-label="primary">
           <NavLink to="/" end>{t('nav.letters')}</NavLink>
+          <NavLink to="/find">{t('nav.find')}</NavLink>
           <NavLink to="/glossary">{t('nav.glossary')}</NavLink>
           <NavLink to="/about">{t('nav.about')}</NavLink>
         </nav>

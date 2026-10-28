@@ -5,7 +5,7 @@ export function AboutPage() {
   return (
     <article className="about-page">
       <header className="page-head">
-        <h2 className="page-title">{t('about.title')}</h2>
+        <h1 className="page-title">{t('about.title')}</h1>
       </header>
       <p className="page-blurb">{t('about.body')}</p>
     </article>

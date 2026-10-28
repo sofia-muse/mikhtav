@@ -14,7 +14,7 @@ public class LetterServiceTests
         var logger = new TestLogger<LetterService>();
         var sut = CreateSut(logger);
 
-        var detail = await sut.GetLetterBySlugAsync("drisha-shnatit", "ru");
+        var detail = await sut.GetLetterBySlugAsync("sample-letter", "ru");
 
         Assert.NotNull(detail);
         Assert.Equal("דוגמה", detail!.NameHe);
@@ -31,7 +31,7 @@ public class LetterServiceTests
             logger.Entries,
             entry => entry.Level == LogLevel.Information
                 && entry.Message.Contains("Loaded letter detail")
-                && entry.Message.Contains("drisha-shnatit")
+                && entry.Message.Contains("sample-letter")
                 && entry.Message.Contains("ru")
                 && entry.Message.Contains("1 sections"));
     }
@@ -41,7 +41,7 @@ public class LetterServiceTests
     {
         var sut = CreateSut();
 
-        var detail = await sut.GetLetterBySlugAsync("drisha-shnatit", "uk");
+        var detail = await sut.GetLetterBySlugAsync("sample-letter", "uk");
 
         Assert.NotNull(detail);
         Assert.Equal("Sample", detail!.Name);
@@ -83,7 +83,7 @@ public class LetterServiceTests
         Assert.Equal("info", index[0].Letters[0].Severity);
         Assert.True(index[0].Letters[0].HasActionRequired);
         Assert.True(index[0].Letters[0].HasDeadline);
-        Assert.Equal(1, index[0].Letters[0].CommonRank);
+        Assert.Null(index[0].Letters[0].CommonRank);
         Assert.Contains(
             logger.Entries,
             entry => entry.Level == LogLevel.Information
@@ -141,7 +141,7 @@ public class LetterServiceTests
             };
             _letter = new LetterType
             {
-                Id = 1, CategoryId = 1, Slug = "drisha-shnatit", OrderIndex = 1,
+                Id = 1, CategoryId = 1, Slug = "sample-letter", OrderIndex = 1,
                 NameHe = "דוגמה", NameEn = "Sample", NameRu = "Образец",
                 SummaryEn = "An example.",
                 PrimaryNextStepEn = "Bring supporting proof.",
@@ -155,7 +155,7 @@ public class LetterServiceTests
             };
             _term = new BureauTerm
             {
-                Id = 1,
+                Id = 999,
                 TermHe = "טופס",
                 Transliteration = "Tofes",
                 MeaningEn = "Form",

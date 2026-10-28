@@ -4,11 +4,12 @@
   "eyebrow": "An olim handbook",
   "language": "Language",
   "loading": "Loading…",
-  "error": "Could not reach the server. Is the API running?",
+  "error": "The catalog could not be loaded. Refresh the page and try again.",
   "nav": {
     "letters": "Letters",
     "glossary": "Glossary",
-    "about": "About"
+    "about": "About",
+    "find": "Identify a letter"
   },
   "letters": {
     "indexTitle": "Common letters, by issuing authority",
@@ -66,5 +67,9 @@
     "clear": "Clear filters",
     "empty": "No letters match. Try another phrase or clear the filters.",
     "glossaryPlaceholder": "Search Hebrew, transliteration, or meaning…"
+  },
+  "finderEntry": {
+    "title": "Not sure which letter you received?",
+    "body": "Compare the sender and Hebrew heading in three steps. No upload or registration."
   }
 }

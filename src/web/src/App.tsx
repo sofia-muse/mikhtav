@@ -5,6 +5,7 @@ import { LettersIndexPage } from './pages/LettersIndexPage'
 import { LetterDetailPage } from './pages/LetterDetailPage'
 import { GlossaryPage } from './pages/GlossaryPage'
 import { AboutPage } from './pages/AboutPage'
+import { LetterFinder } from './features/discovery/LetterFinder'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <main>
           <Routes>
             <Route path="/" element={<LettersIndexPage />} />
+            <Route path="/find" element={<LetterFinder />} />
             <Route path="/letters/:slug" element={<LetterDetailPage />} />
             <Route path="/glossary" element={<GlossaryPage />} />
             <Route path="/about" element={<AboutPage />} />
