@@ -57,5 +57,14 @@
     "title": "About Mikhtav",
     "body": "Mikhtav is an educational guide to common Israeli bureaucratic letters. It does not republish any government data and is not legal advice — verify your specific letter with the issuing authority."
   },
-  "disclaimer": "Educational information only — verify your specific letter with the issuing authority."
+  "disclaimer": "Educational information only — verify your specific letter with the issuing authority.",
+  "search": {
+    "label": "Find your letter",
+    "placeholder": "Search a title, Hebrew phrase, or authority…",
+    "actionOnly": "Only letters requiring action",
+    "count": "{{count}} letters found",
+    "clear": "Clear filters",
+    "empty": "No letters match. Try another phrase or clear the filters.",
+    "glossaryPlaceholder": "Search Hebrew, transliteration, or meaning…"
+  }
 }

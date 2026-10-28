@@ -5,6 +5,7 @@ import { fetchGlossary, type GlossaryTerm } from '../api'
 export function GlossaryPage() {
   const { t, i18n } = useTranslation()
   const [terms, setTerms] = useState<GlossaryTerm[]>([])
+  const [query, setQuery] = useState('')
   const [state, setState] = useState<'loading' | 'ready' | 'error'>('loading')
 
   useEffect(() => {
@@ -34,9 +35,13 @@ export function GlossaryPage() {
         <h2 className="page-title">{t('glossary.title')}</h2>
         <p className="page-blurb">{t('glossary.blurb')}</p>
       </header>
+      <section className="catalog-search">
+        <label htmlFor="glossary-search">{t('search.label')}</label>
+        <input id="glossary-search" type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder={t('search.glossaryPlaceholder')} />
+      </section>
 
       <ul className="glossary">
-        {terms.map((term, i) => (
+        {terms.filter(term => [term.termHe, term.transliteration, term.meaning, term.usageNote ?? ''].join(' ').toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())).map((term, i) => (
           <li
             key={term.id}
             className="glossary-entry"

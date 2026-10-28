@@ -26,3 +26,4 @@ appsettings.*.local.json
 .DS_Store
 Thumbs.db
 .idea/
+.dotnet-local/

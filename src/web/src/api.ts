@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:5080'
+const BASE = import.meta.env.VITE_API_URL?.replace(/\/$/, '')
 
 export interface LetterTypeSummary {
   id: number
@@ -62,7 +62,13 @@ export interface GlossaryTerm {
 }
 
 async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`${BASE}${path}`)
+  const url = new URL(path, 'https://catalog.local')
+  const language = url.searchParams.get('lang')?.split('-')[0] ?? 'en'
+  const locale = ['en', 'he', 'ru', 'uk'].includes(language) ? language : 'en'
+  const resource = url.pathname === '/api/letters' ? 'index'
+    : url.pathname === '/api/glossary' ? 'glossary'
+    : url.pathname.slice('/api/letters/'.length)
+  const res = await fetch(BASE ? `${BASE}${path}` : `/catalog/${locale}/${resource}.json`)
   if (!res.ok) throw new Error(`API ${res.status}`)
   return res.json() as Promise<T>
 }

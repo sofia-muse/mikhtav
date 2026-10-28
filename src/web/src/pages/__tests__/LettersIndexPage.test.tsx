@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import i18n from '../../i18n'
 import { LettersIndexPage } from '../LettersIndexPage'
@@ -28,6 +29,20 @@ const indexPayload = [
 ]
 
 describe('LettersIndexPage', () => {
+  it('searches Hebrew text, announces no results, and clears filters', async () => {
+    await i18n.changeLanguage('en')
+    const user = userEvent.setup()
+    render(<MemoryRouter><LettersIndexPage /></MemoryRouter>)
+    const search = await screen.findByRole('searchbox')
+    await user.type(search, 'הודעת')
+    expect(screen.getAllByText('Annual Tax Demand Notice').length).toBeGreaterThan(0)
+    await user.clear(search)
+    await user.type(search, 'unmatched query')
+    expect(screen.queryByText('Annual Tax Demand Notice')).toBeNull()
+    expect(screen.getByRole('status').textContent).toBe('0 letters found')
+    await user.click(screen.getByRole('button', { name: 'Clear filters' }))
+    expect(screen.getAllByText('Annual Tax Demand Notice').length).toBeGreaterThan(0)
+  })
   beforeEach(() => {
     vi.stubGlobal(
       'fetch',

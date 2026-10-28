@@ -11,6 +11,8 @@ interface FeaturedLetter extends LetterTypeSummary {
 export function LettersIndexPage() {
   const { t, i18n } = useTranslation()
   const [data, setData] = useState<Category[]>([])
+  const [query, setQuery] = useState('')
+  const [actionOnly, setActionOnly] = useState(false)
   const [state, setState] = useState<'loading' | 'ready' | 'error'>('loading')
 
   useEffect(() => {
@@ -34,7 +36,14 @@ export function LettersIndexPage() {
   if (state === 'loading') return <p className="muted">{t('loading')}</p>
   if (state === 'error') return <p className="error">{t('error')}</p>
 
-  const commonLetters: FeaturedLetter[] = data
+  const normalizedQuery = query.trim().toLocaleLowerCase()
+  const filtered = data.map(cat => ({ ...cat, letters: cat.letters.filter(letter =>
+    (!actionOnly || letter.hasActionRequired) &&
+    [cat.name, cat.issuer, letter.name, letter.nameHe, letter.summary, letter.triageHint ?? '']
+      .join(' ').toLocaleLowerCase().includes(normalizedQuery)
+  ) })).filter(cat => cat.letters.length > 0)
+  const count = filtered.reduce((total, cat) => total + cat.letters.length, 0)
+  const commonLetters: FeaturedLetter[] = filtered
     .flatMap((cat) =>
       cat.letters
         .filter((letter) => letter.commonRank !== null)
@@ -85,6 +94,14 @@ export function LettersIndexPage() {
 
   return (
     <>
+      <section className="catalog-search" aria-label={t('search.label')}>
+        <label htmlFor="letter-search">{t('search.label')}</label>
+        <input id="letter-search" type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder={t('search.placeholder')} />
+        <label className="search-toggle"><input type="checkbox" checked={actionOnly} onChange={e => setActionOnly(e.target.checked)} />{t('search.actionOnly')}</label>
+        <p role="status">{t('search.count', { count })}</p>
+        {(query || actionOnly) && <button type="button" onClick={() => { setQuery(''); setActionOnly(false) }}>{t('search.clear')}</button>}
+      </section>
+      {count === 0 && <p className="search-empty">{t('search.empty')}</p>}
       <p className="results-meta">
         <span>{t('letters.indexTitle')}</span>
       </p>
@@ -118,7 +135,7 @@ export function LettersIndexPage() {
         </section>
       )}
 
-      {data.map((cat, ci) => (
+      {filtered.map((cat, ci) => (
         <section
           className="category"
           key={cat.id}

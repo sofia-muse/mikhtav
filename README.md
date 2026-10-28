@@ -56,6 +56,28 @@ flowchart LR
 
 ## Running it
 
+### Vercel / standalone catalog
+
+The frontend runs without a database or API by default. It reads versioned JSON snapshots
+of the existing editorial seed data from `src/web/public/catalog/` (7 letters and the glossary,
+in EN/HE/RU/UK, using the same translation fallbacks as the API). These are curated examples,
+not live authority data. Missing translations still fall back to English.
+
+Import the repository into Vercel with root directory `src/web` and framework Vite;
+`src/web/vercel.json` supports direct links to letter and glossary pages.
+Set `VITE_API_URL` at build time to use a separately hosted .NET API instead.
+
+After editing seed content, regenerate snapshots from the repository root with .NET 10:
+
+```bash
+dotnet run --project tools/ExportCatalog -- src/web/public/catalog
+```
+
+The exporter uses the actual `LetterService`, so guidance, severity and language fallback
+stay consistent with the backend. Generated JSON is committed; Vercel needs only Node.
+The catalog includes multilingual search and an action-required filter; the glossary supports
+Hebrew, transliteration and meaning search.
+
 Requires the .NET 8 SDK (or newer), SQL Server LocalDB (default), and Node 20+.
 
 ```bash
