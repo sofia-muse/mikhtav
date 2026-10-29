@@ -2,9 +2,12 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
-import { OfficialDocumentsPage, type OfficialDocument } from './OfficialDocumentsPage'
+import { OfficialDocumentsPage } from './pages/OfficialDocumentsPage'
+import type { OfficialDocument } from '../../shared/types'
+import i18n from '../../shared/i18n'
+import { beforeEach } from 'vitest'
 
-vi.mock('react-i18next', () => ({ useTranslation: () => ({ i18n: { language: 'en' } }) }))
+beforeEach(async () => { await i18n.changeLanguage('en') })
 const translation = { title: 'Income form', summary: 'A public form for income reporting.' }
 const document: OfficialDocument = { id: 'income', kind: 'form', issuer: 'bituach-leumi', officialTitleHe: 'דיווח הכנסות', formNumber: '101', sourcePageUrl: 'https://www.gov.il/example', downloadUrl: 'https://www.gov.il/original.pdf', relatedLetterSlugs: ['income-guide'], translations: { en: translation, ru: translation, uk: translation, he: translation }, retrieval: { status: 'verified', checkedAt: '2026-10-29T09:00:00Z', httpStatus: 200, contentType: 'application/pdf', sha256: 'abc123', bytes: 100, localPath: '/official/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.pdf' } }
 function setup(documents: OfficialDocument[], path = '/documents') {
@@ -13,20 +16,31 @@ function setup(documents: OfficialDocument[], path = '/documents') {
 }
 afterEach(() => { cleanup(); vi.unstubAllGlobals() })
 describe('official document catalog', () => {
+  it('uses only a preview tied to the original PDF hash and exposes dimensions', async () => {
+    const digest = 'a'.repeat(64)
+    setup([{ ...document, retrieval: { ...document.retrieval, sha256: digest }, preview: { url: `/official/previews/${digest}.webp`, width: 480, height: 679, sourceSha256: digest } }])
+    await screen.findByRole('heading', { name: 'Income form' })
+    const image = screen.getByRole('article').querySelector('img')!
+    expect(image).toHaveAttribute('src', `/official/previews/${digest}.webp`)
+    expect(image).toHaveAttribute('width', '480')
+    expect(image).toHaveAttribute('height', '679')
+    expect(image).toHaveAttribute('loading', 'lazy')
+    expect(screen.getByRole('link', { name: /View original/ })).toHaveAttribute('target', '_blank')
+  })
   it('renders real source and saved original provenance without implying editorial verification', async () => {
     setup([document])
     expect(await screen.findByRole('heading', { name: 'Income form' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Official source' })).toHaveAttribute('href', document.sourcePageUrl)
-    expect(screen.getByRole('link', { name: 'Saved original PDF' })).toHaveAttribute('href', '/official/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.pdf')
+    expect(screen.getByRole('link', { name: /Official source/ })).toHaveAttribute('href', document.sourcePageUrl)
+    expect(screen.getByRole('link', { name: /View original/ })).toHaveAttribute('href', '/official/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.pdf')
     expect(screen.getByText(/does not mean the content has been editorially reviewed/)).toBeInTheDocument()
     expect(screen.getByText('דיווח הכנסות')).toHaveAttribute('lang', 'he')
-    expect(screen.getByText(/National Insurance Institute/)).toBeInTheDocument()
+    expect(within(screen.getByRole('article')).getByText(/National Insurance Institute/)).toBeInTheDocument()
   })
   it('never offers a cached original for an unavailable entry, even with stale cache metadata', async () => {
     setup([{ ...document, retrieval: { ...document.retrieval, status: 'unavailable' } }])
     expect(await screen.findByText('Original not retrieved')).toBeInTheDocument()
-    expect(screen.queryByRole('link', { name: 'Saved original PDF' })).not.toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Official source' })).toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: /View original/ })).not.toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /Official source/ })).toBeInTheDocument()
   })
   it('searches Hebrew and form numbers, filters kinds and clears empty results', async () => {
     setup([document])
@@ -66,7 +80,7 @@ describe('official document catalog', () => {
   })
   it('accepts exact official hosts and standard HTTPS port', async () => {
     setup([{ ...document, sourcePageUrl: 'https://btl.gov.il:443/form', downloadUrl: 'https://gov.il/form.pdf' }])
-    expect(await screen.findByRole('link', { name: 'Official source' })).toHaveAttribute('href', 'https://btl.gov.il:443/form')
-    expect(screen.getByRole('link', { name: 'Original PDF on official website' })).toHaveAttribute('href', 'https://gov.il/form.pdf')
+    expect(await screen.findByRole('link', { name: /Official source/ })).toHaveAttribute('href', 'https://btl.gov.il:443/form')
+    expect(screen.getByRole('link', { name: /View original/ })).toHaveAttribute('href', document.retrieval.localPath)
   })
 })

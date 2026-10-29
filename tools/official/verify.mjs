@@ -12,11 +12,12 @@ const slugs = new Set(englishIndex.flatMap(c => c.letters.map(l => l.slug)))
 assert.deepEqual(catalog.documents.map(d => d.id), source.documents.map(d => d.id), 'Registry/catalog IDs')
 let successful = 0
 for (const [i, document] of catalog.documents.entries()) {
-  const { retrieval, ...registryFields } = document
+  const { retrieval, preview, ...registryFields } = document
   assert.deepEqual(registryFields, source.documents[i], 'Published metadata matches curated registry')
   assert.ok(!Number.isNaN(Date.parse(retrieval.checkedAt)), 'Actual attempt timestamp')
   assert.ok(document.relatedLetterSlugs.every(slug => slugs.has(slug)), 'Valid related guide')
   if (retrieval.status === 'unavailable') {
+    assert.ok(!preview, 'Unavailable originals have no preview')
     assert.equal(retrieval.localPath, null)
     assert.equal(retrieval.sha256, null)
     assert.equal(retrieval.bytes, null)
@@ -38,6 +39,19 @@ for (const [i, document] of catalog.documents.entries()) {
     const cached = await readFile(new URL(`src/web/public${retrieval.localPath}`, root))
     assert.ok(bytes.equals(cached), 'Cached original must be byte-for-byte identical')
     assert.equal(cached.subarray(0, 5).toString(), '%PDF-')
+    if (preview) {
+      assert.equal(preview.sourceSha256, retrieval.sha256)
+      assert.equal(preview.url, `/official/previews/${retrieval.sha256}.webp`)
+      assert.equal(preview.width, 480)
+      assert.ok(Number.isInteger(preview.height) && preview.height > 0)
+      const webp = await readFile(new URL(`src/web/public${preview.url}`, root))
+      assert.equal(webp.subarray(0, 4).toString(), 'RIFF')
+      assert.equal(webp.subarray(8, 12).toString(), 'WEBP')
+      // Pillow writes VP8 (lossy) or VP8L/VP8X. The committed previews use VP8.
+      assert.equal(webp.subarray(12, 16).toString(), 'VP8 ')
+      assert.equal(webp.readUInt16LE(26) & 0x3fff, preview.width)
+      assert.equal(webp.readUInt16LE(28) & 0x3fff, preview.height)
+    }
   } else assert.equal(retrieval.localPath, null, 'Never serve imported HTML as executable site content')
   successful++
 }

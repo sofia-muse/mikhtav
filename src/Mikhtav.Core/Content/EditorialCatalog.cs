@@ -1,31 +1,35 @@
-using System.Reflection;
 using System.Text.Json;
 using Mikhtav.Core.Dtos;
+using Mikhtav.Core.Abstractions;
 
 namespace Mikhtav.Core.Content;
 
 // Published editorial content is versioned separately from database identity and structure.
 // Both the API and static exporter use this projection; a future CMS can supply these records.
-public static class EditorialCatalog
+public sealed class EditorialCatalog : IEditorialCatalog
 {
     private static readonly JsonSerializerOptions Json = new(JsonSerializerDefaults.Web);
-    private static readonly Translations Data = Read<Translations>("translations.json");
-    private static readonly Dictionary<(string, string), LetterTranslation> Letters =
-        Data.Letters.ToDictionary(t => (t.Slug, t.Language));
-    private static readonly Dictionary<(string, string), CategoryTranslation> Categories =
-        Data.Categories.ToDictionary(t => (t.Slug, t.Language));
-    private static readonly Dictionary<(int, string), TermTranslation> Terms =
-        Data.Glossary.ToDictionary(t => (t.Id, t.Language));
-    private static readonly Dictionary<string, EditorialProvenance> Provenance =
-        Read<List<EditorialProvenance>>("provenance.json").ToDictionary(p => p.Slug);
+    private readonly Dictionary<(string, string), LetterTranslation> Letters;
+    private readonly Dictionary<(string, string), CategoryTranslation> Categories;
+    private readonly Dictionary<(int, string), TermTranslation> Terms;
+    private readonly Dictionary<string, EditorialProvenance> Provenance;
 
-    public static string NormalizeLanguage(string language)
+    public EditorialCatalog()
+    {
+        var data = Read<Translations>("translations.json");
+        Letters = data.Letters.ToDictionary(t => (t.Slug, t.Language));
+        Categories = data.Categories.ToDictionary(t => (t.Slug, t.Language));
+        Terms = data.Glossary.ToDictionary(t => (t.Id, t.Language));
+        Provenance = Read<List<EditorialProvenance>>("provenance.json").ToDictionary(p => p.Slug);
+    }
+
+    public string NormalizeLanguage(string language)
     {
         var code = language.Split('-', '_')[0].ToLowerInvariant();
         return code switch { "ua" => "uk", "en" or "he" or "ru" or "uk" => code, _ => "en" };
     }
 
-    public static CategoryDto Localize(CategoryDto category, string language)
+    public CategoryDto Localize(CategoryDto category, string language)
     {
         var lang = NormalizeLanguage(language);
         Categories.TryGetValue((category.Slug, lang), out var translation);
@@ -37,7 +41,7 @@ public static class EditorialCatalog
         };
     }
 
-    private static LetterTypeSummaryDto Localize(LetterTypeSummaryDto letter, string lang)
+    private LetterTypeSummaryDto Localize(LetterTypeSummaryDto letter, string lang)
     {
         if (!Letters.TryGetValue((letter.Slug, lang), out var translation)) return letter;
         return letter with
@@ -48,7 +52,7 @@ public static class EditorialCatalog
         };
     }
 
-    public static LetterDetailDto Localize(LetterDetailDto letter, string categorySlug, string language)
+    public LetterDetailDto Localize(LetterDetailDto letter, string categorySlug, string language)
     {
         var lang = NormalizeLanguage(language);
         Letters.TryGetValue((letter.Slug, lang), out var translation);
@@ -91,7 +95,7 @@ public static class EditorialCatalog
         };
     }
 
-    public static GlossaryTermDto Localize(GlossaryTermDto term, string language) =>
+    public GlossaryTermDto Localize(GlossaryTermDto term, string language) =>
         Terms.TryGetValue((term.Id, NormalizeLanguage(language)), out var text)
             ? term with { Meaning = text.Meaning, UsageNote = text.UsageNote } : term;
 

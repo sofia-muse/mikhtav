@@ -1,0 +1,29 @@
+.root { max-width: 860px; margin-inline: auto; }
+.answers { display:flex;flex-wrap:wrap;gap:1rem 2rem;margin-block:0 1.5rem;font-size:.85rem;color:var(--ink-soft); }
+.answers div { min-inline-size:0; }.answers dt { color:var(--muted);font-size:.75rem; }.answers dd { margin:0;overflow-wrap:anywhere; }
+.steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin-block: 1.5rem; }
+.steps li { min-inline-size:0; overflow-wrap:anywhere; }
+.steps li { display: flex; gap: .65rem; align-items: center; color: var(--muted); border-block-end: 2px solid var(--line); padding-block: .8rem; font-size: .9rem; }
+.steps span { display: inline-grid; place-items: center; flex: 0 0 1.7rem; block-size: 1.7rem; border: 1px solid var(--line); border-radius: 50%; }
+.steps li[aria-current] { border-color: var(--accent); color: var(--ink); font-weight: 650; }
+.steps li[aria-current] span { color: var(--surface); background: var(--accent); border-color: var(--accent); }
+.panel { padding: clamp(1rem, 4vw, 2rem); }
+.panel h2 { margin-block: 0 1rem; font-size: clamp(1.3rem, 3vw, 1.65rem); }
+.panel h2:focus { outline: none; }
+.options { display: grid; gap: .75rem; border: 0; padding: 0; margin: 0; min-inline-size: 0; }
+.options label { display: flex; align-items: center; gap: .8rem; padding: 1rem; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; line-height: 1.5; }
+.options label>span { min-inline-size:0; overflow-wrap:anywhere; }
+.options label:has(input:checked) { border-color: var(--accent); background: var(--paper); }
+.options input { inline-size: 1.2rem; block-size: 1.2rem; flex-shrink: 0; accent-color: var(--accent); }
+.options input:focus-visible { outline: 3px solid var(--info); outline-offset: 3px; }
+.help, .notice { color: var(--muted); line-height: 1.7; }
+.notice { border-inline-start: 3px solid var(--line); padding-inline-start: 1rem; }
+.count { font-weight: 650; }
+.results { list-style: none; padding: 0; display: grid; gap: 1rem; }
+.results h3 { margin-block: .4rem; }
+.results p { line-height: 1.65; }
+.reason, .category { color: var(--muted); font-size: .85rem; }
+.hebrew { text-align: start; font-size: 1.1rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-block-start: 1.5rem; }
+.srOnly { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 540px) { .steps { gap: .4rem; } .steps li { flex-direction: column; align-items: flex-start; font-size: .78rem; } }

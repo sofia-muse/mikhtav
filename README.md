@@ -1,6 +1,6 @@
 # Mikhtav · Israeli Letters Explained
 
-> _Mikhtav_ (מכתב, "letter" in Hebrew) is a small bilingual web app that helps olim — and
+> _Mikhtav_ (מכתב, "letter" in Hebrew) is a multilingual web app that helps olim — and
 > anyone struggling with Hebrew bureaucratic mail — understand the official letters that arrive
 > from Israeli authorities. Pick a letter type, get a section-by-section explanation in
 > **English, Hebrew, Russian, or Ukrainian**, along with what action is required and the
@@ -16,9 +16,11 @@ TypeScript (Vite) · react-i18next with full RTL · xUnit · Vitest · GitHub Ac
 
 ## Architecture
 
-A layered backend behind a thin API, with per-language content stored in the database. The
-frontend picks one language per request; missing translations fall back to English so
-something always renders.
+A static public React application on Vercel and an optional .NET API share versioned,
+four-language editorial content. The frontend is organised into `app`, `features` and
+`shared`, with a common query cache, namespace translations and CSS Modules. The API
+and snapshot exporter use the same injectable `IEditorialCatalog` implementation.
+See [public architecture and release checks](docs/public-architecture.md).
 
 ```mermaid
 flowchart LR
@@ -87,6 +89,11 @@ visually inspected; originals are not edited or filled by this application.
 Offline validation: `node tools/official/verify.mjs`. Transport regression tests:
 `node --test tools/official/transport.test.mjs`. CI runs both alongside the frontend tests.
 Reimport is an explicit command, not a recurring background service.
+
+First-page previews are generated separately with `python tools/official/previews.py`
+(Pillow and Poppler required). The command uses already saved PDFs, publishes 480px WebP
+images and links each preview to its source SHA-256. Originals are unchanged; missing
+previews are allowed. Preview generation and source import never run during Vercel builds.
 
 The public catalog includes a three-step letter finder (sender, original Hebrew heading,
 possible guides), a per-letter checklist and an official-source panel. The finder compares

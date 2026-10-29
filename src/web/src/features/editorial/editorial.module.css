@@ -1,0 +1,10 @@
+.root { padding-block: 1.8rem; border-block-start: 1px solid var(--line); color: var(--muted); font-size: .9rem; line-height: 1.7; }
+.root h2 { color: var(--ink); font-size: 1.2rem; }
+.root dl { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+.root dt { font-size: .8rem; }
+.root dd { margin: .2rem 0 0; color: var(--ink); font-weight: 600; }
+.root ul { list-style: none; padding: 0; }
+.root li + li { margin-block-start: 1.2rem; }
+.root a { color: var(--accent); text-underline-offset: .2em; }
+.root a:focus-visible { outline: 3px solid var(--info); outline-offset: 3px; }
+.translationNotice { padding: 1rem; border-inline-start: 3px solid var(--accent); background: var(--surface); color: var(--ink); }

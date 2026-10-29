@@ -1,0 +1,13 @@
+:root {
+  --paper:#f6f3ec; --surface:#fffdf9; --paper-2:#eee9de; --paper-3:#e5ded0;
+  --ink:#242b29; --ink-soft:#49534e; --muted:#66706a; --ink-muted:var(--muted); --ink-faint:#747b75;
+  --line:#deddd3; --rule:var(--line); --rule-soft:#e9e6dd;
+  --accent:#366454; --accent-deep:#254e40; --info:#34645f; --info-soft:#e9f0ec;
+  --warning:#775322; --warning-soft:#f8efd9; --critical:#963d36; --critical-soft:#f8e9e5;
+  --paper-deep:#ded5c3; --font-body:'Rubik',system-ui,sans-serif;
+  --font-display:'Fraunces','Frank Ruhl Libre',Georgia,serif; --font-mono:'IBM Plex Mono',monospace;
+  --rule-line:1px solid var(--line); --rule-line-soft:1px solid var(--rule-soft); --hairline-double:1px solid var(--line);
+  --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem; --space-6:1.5rem; --space-8:2rem;
+  --content-width:1160px; --radius:12px;
+  font-family:var(--font-body); color:var(--ink); background:var(--paper); font-size:100%; font-synthesis:none; -webkit-font-smoothing:antialiased;
+}

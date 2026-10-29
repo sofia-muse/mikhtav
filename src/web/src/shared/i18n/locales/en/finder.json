@@ -1,0 +1,28 @@
+{
+  "title": "Find your letter",
+  "intro": "Compare the sender and Hebrew heading on your letter with our small catalog. You do not need to upload personal documents.",
+  "steps": [
+    "Sender",
+    "Heading",
+    "Possible matches"
+  ],
+  "issuer": "Who sent the letter?",
+  "unknown": "I am not sure",
+  "heading": "Which headings can you see?",
+  "help": "Select the headings that appear on your letter. You can continue without a selection.",
+  "next": "Continue",
+  "back": "Back",
+  "restart": "Start again",
+  "results": "Possible matches",
+  "note": "These suggestions compare catalog headings only. They do not verify your letter, its authenticity, or your personal obligations. Check the sender, dates and details on your original letter.",
+  "headingMatch": "Selected Hebrew heading matches",
+  "issuerMatch": "From your selected sender",
+  "browse": "Showing this part of the catalog; no heading selected",
+  "open": "Read the guide",
+  "empty": "No matching guide in this catalog. Try a different sender or compare the original letter with the issuing authority.",
+  "loading": "Loading letter headings…",
+  "error": "The catalog could not be loaded.",
+  "retry": "Try again",
+  "none": "None of these headings",
+  "catalog": "Browse all letter guides"
+}

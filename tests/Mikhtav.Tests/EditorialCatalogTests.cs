@@ -26,7 +26,7 @@ public class EditorialCatalogTests
             var detail = new LetterDetailDto(seed.Id, seed.Slug, seed.NameEn, seed.NameHe,
                 "fallback issuer", "fallback category", seed.SummaryEn, guidance, sections);
             var category = SeedData.Categories.Single(c => c.Id == seed.CategoryId);
-            var localized = EditorialCatalog.Localize(detail, category.Slug, language);
+            var localized = new EditorialCatalog().Localize(detail, category.Slug, language);
             Assert.True(localized.TranslationComplete, $"{seed.Slug}/{language}");
             Assert.Equal(sections.Select(s => (s.Order, s.LabelHe)), localized.Sections.Select(s => (s.Order, s.LabelHe)));
             Assert.NotEqual("fallback", localized.Guidance.PrimaryNextStep);
@@ -44,7 +44,7 @@ public class EditorialCatalogTests
             new LetterGuidanceDto("info", "fallback", null, false, null, null, null, null),
             SeedData.Sections.Where(s => s.LetterTypeId == 1).Select(s => new LetterSectionDto(
                 s.OrderIndex, s.LabelHe, s.ExplainerEn, s.ActionRequiredEn, s.Deadline, "info")).ToList());
-        Assert.False(EditorialCatalog.Localize(detail, "untranslated-category", "ru").TranslationComplete);
+        Assert.False(new EditorialCatalog().Localize(detail, "untranslated-category", "ru").TranslationComplete);
     }
 
     [Fact]
@@ -53,7 +53,7 @@ public class EditorialCatalogTests
         var letter = new LetterDetailDto(1, "ishur-bituach", "fallback", "אישור", "issuer", "category", "summary",
             new LetterGuidanceDto("info", "fallback", "fallback deadline", false, null, null, null, null),
             new[] { new LetterSectionDto(1, "פרטים", "fallback", "unwanted task", "unwanted deadline", "info") });
-        var localized = EditorialCatalog.Localize(letter, "bituach-leumi", "en");
+        var localized = new EditorialCatalog().Localize(letter, "bituach-leumi", "en");
         // The first section is informational in the editorial record; null must suppress fallback.
         Assert.Null(localized.Sections[0].Deadline);
         Assert.DoesNotContain(localized.Sections, s => s.ActionRequired == "unwanted task");

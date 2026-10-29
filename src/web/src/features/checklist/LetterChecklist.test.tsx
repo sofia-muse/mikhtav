@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
-import type { LetterDetail } from '../../api'
+import type { LetterDetail } from '../../shared/types'
 import '../../i18n'
 import { LetterChecklist } from './LetterChecklist'
 
@@ -53,5 +53,16 @@ describe('LetterChecklist', () => {
     expect(screen.getAllByRole('checkbox')[0]).not.toBeChecked()
     view.rerender(<LetterChecklist letter={versioned} language="ru" />)
     expect(screen.getAllByRole('checkbox')[0]).toBeChecked()
+  })
+
+  it('limits print mode to the checklist and restores the page after printing', () => {
+    const print = vi.spyOn(window, 'print').mockImplementation(() => {
+      expect(document.body).toHaveAttribute('data-checklist-print')
+      expect(screen.getByRole('region')).toHaveAttribute('data-checklist-root')
+    })
+    render(<LetterChecklist letter={letter} language="en" />)
+    fireEvent.click(screen.getByRole('button', { name: 'Print checklist' }))
+    expect(print).toHaveBeenCalledOnce()
+    expect(document.body).not.toHaveAttribute('data-checklist-print')
   })
 })

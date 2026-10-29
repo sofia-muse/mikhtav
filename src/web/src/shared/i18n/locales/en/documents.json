@@ -1,0 +1,42 @@
+{
+  "title": "Official documents",
+  "intro": "Public forms and guidance from official websites. These are general resources, not your personal letters or a service for uploading documents.",
+  "search": "Search documents",
+  "filter": "Document type",
+  "all": "All types",
+  "kinds": {
+    "form": "Form",
+    "guide": "Guide",
+    "certificate-info": "Certificate information",
+    "notice-template": "Public notice template"
+  },
+  "source": "Official source",
+  "pdf": "Original PDF on official website",
+  "saved": "Saved original PDF",
+  "verified": "Original retrieved",
+  "unavailable": "Original not retrieved",
+  "provenance": "Retrieval confirms that the original file or page was fetched unchanged. It does not mean the content has been editorially reviewed or applies to your circumstances.",
+  "missing": "No saved original is available. Open the official source to check the current document.",
+  "number": "Form number",
+  "checked": "Retrieval checked",
+  "hash": "File SHA-256",
+  "loading": "Loading official documents…",
+  "error": "Could not load the official document catalog.",
+  "retry": "Try again",
+  "empty": "No documents match these filters.",
+  "reset": "Clear filters",
+  "related": "Showing documents linked to the selected letter guide.",
+  "clearRelated": "Show all documents",
+  "results": "Documents found",
+  "template": "A public example, not a notice addressed to you.",
+  "details": "Retrieval details",
+  "issuer": "Authority",
+  "allIssuers": "All authorities",
+  "view": "View original",
+  "noPreview": "No preview",
+  "issuers": {
+    "bituach-leumi": "National Insurance Institute",
+    "tax-authority": "Israel Tax Authority",
+    "population-authority": "Population and Immigration Authority"
+  }
+}

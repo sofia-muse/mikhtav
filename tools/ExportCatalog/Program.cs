@@ -2,11 +2,12 @@ using System.Text.Json;
 using Microsoft.Extensions.Logging.Abstractions;
 using Mikhtav.Core.Abstractions;
 using Mikhtav.Core.Models;
+using Mikhtav.Core.Content;
 using Mikhtav.Core.Services;
 using Mikhtav.Infrastructure.Data;
 
 var output = args.Length > 0 ? args[0] : "src/web/public/catalog";
-var service = new LetterService(new SeedRepository(), NullLogger<LetterService>.Instance);
+var service = new LetterService(new SeedRepository(), NullLogger<LetterService>.Instance, new EditorialCatalog());
 foreach (var lang in new[] { "en", "he", "ru", "uk" })
 {
     var directory = Path.Combine(output, lang);

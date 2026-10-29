@@ -2,7 +2,6 @@ using Microsoft.Extensions.Logging;
 using Mikhtav.Core.Abstractions;
 using Mikhtav.Core.Dtos;
 using Mikhtav.Core.Models;
-using Mikhtav.Core.Content;
 
 namespace Mikhtav.Core.Services;
 
@@ -23,16 +22,18 @@ public class LetterService : ILetterService
 
     private readonly ILetterRepository _repo;
     private readonly ILogger<LetterService> _logger;
+    private readonly IEditorialCatalog _editorial;
 
-    public LetterService(ILetterRepository repo, ILogger<LetterService> logger)
+    public LetterService(ILetterRepository repo, ILogger<LetterService> logger, IEditorialCatalog editorial)
     {
         _repo = repo;
         _logger = logger;
+        _editorial = editorial;
     }
 
     public async Task<IReadOnlyList<CategoryDto>> GetIndexAsync(string lang, CancellationToken ct = default)
     {
-        lang = EditorialCatalog.NormalizeLanguage(lang);
+        lang = _editorial.NormalizeLanguage(lang);
         var categories = await _repo.GetCategoriesWithLettersAsync(ct);
         var index = categories
             .OrderBy(c => c.OrderIndex)
@@ -52,12 +53,12 @@ public class LetterService : ILetterService
             lang.ToLowerInvariant(),
             index.Count);
 
-        return index.Select(category => EditorialCatalog.Localize(category, lang)).ToList();
+        return index.Select(category => _editorial.Localize(category, lang)).ToList();
     }
 
     public async Task<LetterDetailDto?> GetLetterBySlugAsync(string slug, string lang, CancellationToken ct = default)
     {
-        lang = EditorialCatalog.NormalizeLanguage(lang);
+        lang = _editorial.NormalizeLanguage(lang);
         var letter = await _repo.GetLetterBySlugAsync(slug, ct);
         if (letter is null)
         {
@@ -96,12 +97,12 @@ public class LetterService : ILetterService
             lang.ToLowerInvariant(),
             detail.Sections.Count);
 
-        return EditorialCatalog.Localize(detail, letter.Category?.Slug ?? "", lang);
+        return _editorial.Localize(detail, letter.Category?.Slug ?? "", lang);
     }
 
     public async Task<IReadOnlyList<GlossaryTermDto>> GetGlossaryAsync(string lang, CancellationToken ct = default)
     {
-        lang = EditorialCatalog.NormalizeLanguage(lang);
+        lang = _editorial.NormalizeLanguage(lang);
         var terms = await _repo.GetGlossaryAsync(ct);
         var glossary = terms
             .OrderBy(t => t.OrderIndex)
@@ -118,7 +119,7 @@ public class LetterService : ILetterService
             lang.ToLowerInvariant(),
             glossary.Count);
 
-        return glossary.Select(term => EditorialCatalog.Localize(term, lang)).ToList();
+        return glossary.Select(term => _editorial.Localize(term, lang)).ToList();
     }
 
     private static string PickName(LetterCategory c, string lang) => lang.ToLowerInvariant() switch

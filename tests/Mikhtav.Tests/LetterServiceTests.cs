@@ -2,12 +2,35 @@ using Microsoft.Extensions.Logging;
 using Mikhtav.Core.Abstractions;
 using Mikhtav.Core.Models;
 using Mikhtav.Core.Services;
+using Mikhtav.Core.Content;
+using Mikhtav.Core.Dtos;
 using Xunit;
 
 namespace Mikhtav.Tests;
 
 public class LetterServiceTests
 {
+    [Fact]
+    public async Task All_read_paths_use_the_injected_editorial_projection()
+    {
+        var editorial = new ReplacementEditorialCatalog();
+        var service = new LetterService(new InMemoryRepo(), new TestLogger<LetterService>(), editorial);
+
+        Assert.Equal("replacement category", (await service.GetIndexAsync("ru-RU"))[0].Name);
+        Assert.Equal("replacement letter", (await service.GetLetterBySlugAsync("sample-letter", "ru-RU"))!.Name);
+        Assert.Equal("replacement meaning", (await service.GetGlossaryAsync("ru-RU"))[0].Meaning);
+        Assert.Equal(3, editorial.NormalizationCalls);
+    }
+
+    private sealed class ReplacementEditorialCatalog : IEditorialCatalog
+    {
+        public int NormalizationCalls { get; private set; }
+        public string NormalizeLanguage(string language) { NormalizationCalls++; return "en"; }
+        public CategoryDto Localize(CategoryDto category, string language) => category with { Name = "replacement category" };
+        public LetterDetailDto Localize(LetterDetailDto letter, string categorySlug, string language) => letter with { Name = "replacement letter" };
+        public GlossaryTermDto Localize(GlossaryTermDto term, string language) => term with { Meaning = "replacement meaning" };
+    }
+
     [Fact]
     public async Task GetLetterBySlug_returns_hebrew_label_localised_explainer_and_logs_result()
     {
@@ -112,7 +135,7 @@ public class LetterServiceTests
     }
 
     private static LetterService CreateSut(TestLogger<LetterService>? logger = null, ILetterRepository? repo = null) =>
-        new(repo ?? new InMemoryRepo(), logger ?? new TestLogger<LetterService>());
+        new(repo ?? new InMemoryRepo(), logger ?? new TestLogger<LetterService>(), new EditorialCatalog());
 
     private sealed class InMemoryRepo : ILetterRepository
     {

@@ -1,0 +1,35 @@
+{
+  "brand": "Mikhtav",
+  "tagline": "Israeli letters, explained",
+  "language": "Language",
+  "loading": "Loading…",
+  "error": "The catalog could not be loaded. Refresh the page and try again.",
+  "nav": {
+    "documents": "Official documents",
+    "letters": "Explanations",
+    "glossary": "Glossary",
+    "about": "About",
+    "find": "Identify a letter"
+  },
+  "disclaimer": "Educational information only — verify your specific letter with the issuing authority.",
+  "retry": "Try again",
+  "skip": "Skip to content",
+  "menu": "Menu",
+  "navigation": "Main navigation",
+  "notFound": "Page not found",
+  "notFoundBody": "This address does not match a page. Browse explanations or identify your letter.",
+  "backHome": "Browse explanations",
+  "titles": {
+    "home": "Israeli letters, explained",
+    "find": "Identify a letter",
+    "documents": "Official documents",
+    "glossary": "Glossary",
+    "about": "About Mikhtav",
+    "letter": "Letter explanation"
+  },
+  "letters": {
+    "actionNeeded": "Action needed",
+    "hasDeadline": "Has a deadline",
+    "open": "Open"
+  }
+}
