@@ -133,6 +133,7 @@ export function LetterDetailPage() {
       </ol>
       <LetterChecklist key={letter.slug} letter={letter} />
       <EditorialSources letter={letter} />
+      <p className="finder-entry"><Link to={`/documents?letter=${encodeURIComponent(letter.slug)}`}>{t('documents.related')} →</Link></p>
     </article>
   )
 }

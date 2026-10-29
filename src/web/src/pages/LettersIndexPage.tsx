@@ -95,6 +95,7 @@ export function LettersIndexPage() {
   return (
     <>
       <section className="finder-entry"><Link to="/find">{t('finderEntry.title')} →</Link><p>{t('finderEntry.body')}</p></section>
+      <section className="finder-entry"><Link to="/documents">{t('nav.documents')} →</Link><p>{t('documents.intro')}</p></section>
       <section className="catalog-search" aria-label={t('search.label')}>
         <label htmlFor="letter-search">{t('search.label')}</label>
         <input id="letter-search" type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder={t('search.placeholder')} />

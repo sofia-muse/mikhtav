@@ -21,6 +21,7 @@ export function Nav() {
         <nav className="nav-links" aria-label="primary">
           <NavLink to="/" end>{t('nav.letters')}</NavLink>
           <NavLink to="/find">{t('nav.find')}</NavLink>
+          <NavLink to="/documents">{t('nav.documents')}</NavLink>
           <NavLink to="/glossary">{t('nav.glossary')}</NavLink>
           <NavLink to="/about">{t('nav.about')}</NavLink>
         </nav>

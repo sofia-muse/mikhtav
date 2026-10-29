@@ -6,6 +6,7 @@
   "loading": "Loading…",
   "error": "The catalog could not be loaded. Refresh the page and try again.",
   "nav": {
+    "documents": "Official documents",
     "letters": "Letters",
     "glossary": "Glossary",
     "about": "About",
@@ -56,7 +57,7 @@
   },
   "about": {
     "title": "About Mikhtav",
-    "body": "Mikhtav is an educational guide to common Israeli bureaucratic letters. It does not republish any government data and is not legal advice — verify your specific letter with the issuing authority."
+    "body": "Mikhtav explains common Israeli bureaucratic letters and links them to public official documents. The original PDFs are preserved unchanged; translated titles and explanations are editorial content. Forms and information pages are not personal notices. Verify your own letter with the issuing authority."
   },
   "disclaimer": "Educational information only — verify your specific letter with the issuing authority.",
   "search": {
@@ -68,6 +69,7 @@
     "empty": "No letters match. Try another phrase or clear the filters.",
     "glossaryPlaceholder": "Search Hebrew, transliteration, or meaning…"
   },
+  "documents": { "related": "Related official documents and originals", "intro": "Public forms, original PDFs and official guidance. Clearly separated from personal letters and our editorial explanations." },
   "finderEntry": {
     "title": "Not sure which letter you received?",
     "body": "Compare the sender and Hebrew heading in three steps. No upload or registration."
