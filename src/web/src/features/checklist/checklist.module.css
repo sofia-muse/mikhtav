@@ -1,0 +1,22 @@
+.root { padding: clamp(1rem, 3vw, 1.6rem); border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); }
+.root h2 { margin-block: 0 .75rem; font-size: 1.2rem; }
+.privacy, .notice, .storageNote { color: var(--muted); font-size: .875rem; line-height: 1.65; }
+.progress { font-weight: 650; }
+.tasks { list-style: none; padding: 0; margin-block: 1rem; }
+.tasks li + li { border-top: 1px solid var(--line); }
+.tasks label { display: flex; align-items: flex-start; gap: .8rem; padding-block: .9rem; cursor: pointer; line-height: 1.65; }
+.tasks label>span { min-inline-size:0; overflow-wrap:anywhere; }
+.tasks input { flex: 0 0 auto; inline-size: 1.2rem; block-size: 1.2rem; margin-block-start: .25rem; accent-color: var(--accent); }
+.tasks input:checked + span { color: var(--muted); text-decoration: line-through; }
+.tasks input:focus-visible { outline: 3px solid var(--info); outline-offset: 3px; }
+.controls { display: flex; flex-wrap: wrap; gap: .65rem; }
+.printName { display: none; }
+@media print {
+  :global(body[data-checklist-print] *:not(:has([data-checklist-root])):not([data-checklist-root]):not([data-checklist-root] *)) { display: none !important; }
+  :global(body[data-checklist-print]::before) { display: none; }
+  :global(body[data-checklist-print] *:has([data-checklist-root])) { margin: 0; padding: 0; max-width: none; display: block; }
+  .root { margin: 0; background: white; border: 0; color: black; }
+  .tasks li { break-inside: avoid; }
+  .controls, .privacy, .storageNote { display: none !important; }
+  .printName { display: block; font-weight: 600; }
+}

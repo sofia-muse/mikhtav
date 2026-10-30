@@ -14,6 +14,7 @@ public class LetterRepository : ILetterRepository
         await _db.Categories
             .AsNoTracking()
             .Include(c => c.LetterTypes.OrderBy(l => l.OrderIndex))
+                .ThenInclude(l => l.Sections.OrderBy(s => s.OrderIndex))
             .OrderBy(c => c.OrderIndex)
             .ToListAsync(ct);
 

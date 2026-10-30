@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-29T06:06:11.518Z",
+  "documents": [
+    {
+      "id": "tax-rights-guide-2025",
+      "kind": "guide",
+      "issuer": "tax-authority",
+      "officialTitleHe": "דע זכויותיך וחובותיך 2025",
+      "formNumber": null,
+      "sourcePageUrl": "https://www.gov.il/he/departments/topics/annual-tax-reports-for-itc",
+      "downloadUrl": "https://www.gov.il/BlobFolder/generalpage/income-tax-guide-knowyourright/he/Guides_IncomeTax_da-2025.pdf",
+      "relatedLetterSlugs": [
+        "drisha-shnatit",
+        "drishat-hokhahat-hachnasa",
+        "hodaat-hekhzer-mas"
+      ],
+      "translations": {
+        "en": {
+          "title": "Know your tax rights and obligations — 2025 edition",
+          "summary": "Official public tax guide for the 2025 tax year. Background on reporting and assessment concepts; this dated edition does not determine the deadline on an individual notice."
+        },
+        "ru": {
+          "title": "Налоговые права и обязанности — издание за 2025 год",
+          "summary": "Официальное публичное налоговое руководство за налоговый 2025 год. Справочная информация об отчётности и расчёте налога; это издание не определяет срок по конкретному уведомлению."
+        },
+        "he": {
+          "title": "דע זכויותיך וחובותיך — מהדורת 2025",
+          "summary": "מדריך מס רשמי לציבור לשנת המס 2025. מידע רקע על דיווח ושומה; המהדורה המתוארכת אינה קובעת את המועד בהודעה אישית."
+        },
+        "uk": {
+          "title": "Податкові права й обов’язки — видання за 2025 рік",
+          "summary": "Офіційний публічний податковий посібник за податковий 2025 рік. Довідкова інформація про звітність і розрахунок податку; це видання не визначає строк за конкретним повідомленням."
+        }
+      },
+      "retrieval": {
+        "status": "verified",
+        "checkedAt": "2026-10-29T06:06:11.518Z",
+        "httpStatus": 200,
+        "contentType": "application/pdf",
+        "sha256": "5012033e55e0c415a3b50a797acb2d5b5ddae06e2bdbe16c466c78baec9960d0",
+        "bytes": 4991233,
+        "localPath": "/official/files/5012033e55e0c415a3b50a797acb2d5b5ddae06e2bdbe16c466c78baec9960d0.pdf",
+        "sourceUrl": "https://www.gov.il/BlobFolder/generalpage/income-tax-guide-knowyourright/he/Guides_IncomeTax_da-2025.pdf",
+        "finalUrl": "https://www.gov.il/BlobFolder/generalpage/income-tax-guide-knowyourright/he/Guides_IncomeTax_da-2025.pdf",
+        "method": "public-pdf",
+        "change": "new",
+        "reviewStatus": "not-reviewed",
+        "observedTitle": null,
+        "sourceLastModified": "Sun, 05 Jul 2026 07:34:52 GMT"
+      },
+      "preview": {
+        "url": "/official/previews/5012033e55e0c415a3b50a797acb2d5b5ddae06e2bdbe16c466c78baec9960d0.webp",
+        "width": 480,
+        "height": 679,
+        "sourceSha256": "5012033e55e0c415a3b50a797acb2d5b5ddae06e2bdbe16c466c78baec9960d0"
+      }
+    },
+    {
+      "id": "btl-6101",
+      "kind": "form",
+      "issuer": "bituach-leumi",
+      "officialTitleHe": "דין וחשבון רב שנתי (6101)",
+      "formNumber": "6101",
+      "sourcePageUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/forms/insurance_forms/Pages/6101%20-%20%20%D7%93%D7%99%D7%9F%20%D7%95%D7%97%D7%A9%D7%91%D7%95%D7%9F%20%D7%A8%D7%91%20%D7%A9%D7%A0%D7%AA%D7%99.aspx",
+      "downloadUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/Documents/T6101.pdf",
+      "relatedLetterSlugs": [
+        "ishur-bituach"
+      ],
+      "translations": {
+        "en": {
+          "title": "Multi-year declaration — form 6101",
+          "summary": "Public blank form for opening an insurance collection file or reporting changes. An application form, not an enrolment confirmation issued to a person."
+        },
+        "ru": {
+          "title": "Многолетняя декларация — форма 6101",
+          "summary": "Общедоступный бланк для открытия дела по страховым взносам или сообщения об изменениях. Это заявление, а не персональное подтверждение регистрации."
+        },
+        "he": {
+          "title": "דין וחשבון רב שנתי — טופס 6101",
+          "summary": "טופס ריק לציבור לפתיחת תיק גבייה או לדיווח על שינויים. זהו טופס להגשה, ולא אישור רישום אישי שהונפק למבוטח."
+        },
+        "uk": {
+          "title": "Багаторічна декларація — форма 6101",
+          "summary": "Загальнодоступний бланк для відкриття справи зі страхових внесків або повідомлення про зміни. Це заява, а не персональне підтвердження реєстрації."
+        }
+      },
+      "retrieval": {
+        "status": "verified",
+        "checkedAt": "2026-10-29T06:06:11.518Z",
+        "httpStatus": 200,
+        "contentType": "application/pdf",
+        "sha256": "79e4f387e851cf1a8218c52c4991321e9daae39f3c02f235aeaa3287c3d93754",
+        "bytes": 299771,
+        "localPath": "/official/files/79e4f387e851cf1a8218c52c4991321e9daae39f3c02f235aeaa3287c3d93754.pdf",
+        "sourceUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/Documents/T6101.pdf",
+        "finalUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/Documents/T6101.pdf",
+        "method": "public-pdf",
+        "change": "new",
+        "reviewStatus": "not-reviewed",
+        "observedTitle": null,
+        "sourceLastModified": null
+      },
+      "preview": {
+        "url": "/official/previews/79e4f387e851cf1a8218c52c4991321e9daae39f3c02f235aeaa3287c3d93754.webp",
+        "width": 480,
+        "height": 622,
+        "sourceSha256": "79e4f387e851cf1a8218c52c4991321e9daae39f3c02f235aeaa3287c3d93754"
+      }
+    },
+    {
+      "id": "btl-6134",
+      "kind": "form",
+      "issuer": "bituach-leumi",
+      "officialTitleHe": "בקשה לביטול/הפחתת קנסות והצמדה (6134)",
+      "formNumber": "6134",
+      "sourcePageUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/forms/insurance_forms/pages/6134%20-%20%D7%91%D7%A7%D7%A9%D7%94%20%D7%9C%D7%91%D7%99%D7%98%D7%95%D7%9C%D7%94%D7%A4%D7%97%D7%AA%D7%AA%20%D7%A7%D7%A0%D7%A1%D7%95%D7%AA%20%D7%95%D7%94%D7%A6%D7%9E%D7%93%D7%94.aspx",
+      "downloadUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/Documents/t6134.pdf",
+      "relatedLetterSlugs": [
+        "hov-bituach-leumi"
+      ],
+      "translations": {
+        "en": {
+          "title": "Request to reduce penalties and linkage — form 6134",
+          "summary": "Public application form for requesting relief from contribution-debt charges. It is not a debt notice or a guarantee that relief will be granted."
+        },
+        "ru": {
+          "title": "Уменьшение штрафов и индексации — форма 6134",
+          "summary": "Общедоступный бланк обращения об уменьшении начислений по задолженности по взносам. Это не уведомление о долге и не гарантия удовлетворения просьбы."
+        },
+        "he": {
+          "title": "בקשה להפחתת קנסות והצמדה — טופס 6134",
+          "summary": "טופס ציבורי לבקשת הפחתת חיובים הקשורים לחוב בדמי ביטוח. אינו הודעת חוב ואינו מבטיח שהבקשה תאושר."
+        },
+        "uk": {
+          "title": "Зменшення штрафів та індексації — форма 6134",
+          "summary": "Загальнодоступний бланк звернення про зменшення нарахувань за боргом зі внесків. Це не повідомлення про борг і не гарантія задоволення прохання."
+        }
+      },
+      "retrieval": {
+        "status": "verified",
+        "checkedAt": "2026-10-29T06:06:11.518Z",
+        "httpStatus": 200,
+        "contentType": "application/pdf",
+        "sha256": "8e98bc40dbb092604ee8f2e8f0556499a9c5ad4a44120934196e1c28bbf62e85",
+        "bytes": 695421,
+        "localPath": "/official/files/8e98bc40dbb092604ee8f2e8f0556499a9c5ad4a44120934196e1c28bbf62e85.pdf",
+        "sourceUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/Documents/t6134.pdf",
+        "finalUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/Documents/t6134.pdf",
+        "method": "public-pdf",
+        "change": "new",
+        "reviewStatus": "not-reviewed",
+        "observedTitle": null,
+        "sourceLastModified": null
+      },
+      "preview": {
+        "url": "/official/previews/8e98bc40dbb092604ee8f2e8f0556499a9c5ad4a44120934196e1c28bbf62e85.webp",
+        "width": 480,
+        "height": 622,
+        "sourceSha256": "8e98bc40dbb092604ee8f2e8f0556499a9c5ad4a44120934196e1c28bbf62e85"
+      }
+    },
+    {
+      "id": "btl-672",
+      "kind": "form",
+      "issuer": "bituach-leumi",
+      "officialTitleHe": "בקשה לתיקון מקדמות (672)",
+      "formNumber": "672",
+      "sourcePageUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/forms/insurance_forms/pages/672%20-%20%D7%91%D7%A7%D7%A9%D7%94%20%D7%9C%D7%AA%D7%99%D7%A7%D7%95%D7%9F%20%D7%9E%D7%A7%D7%93%D7%9E%D7%95%D7%AA.aspx",
+      "downloadUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/Documents/t672.pdf",
+      "relatedLetterSlugs": [
+        "ishur-bituach",
+        "hov-bituach-leumi"
+      ],
+      "translations": {
+        "en": {
+          "title": "Adjust insurance advance payments — form 672",
+          "summary": "Public form for changing the income basis of current-year contribution advances. Intended for relevant self-employed or non-work-income cases; not a general debt appeal."
+        },
+        "ru": {
+          "title": "Изменение авансовых страховых взносов — форма 672",
+          "summary": "Общедоступный бланк изменения доходной базы авансовых взносов текущего года. Для соответствующих случаев самостоятельной занятости или доходов не от работы; не универсальное возражение против долга."
+        },
+        "he": {
+          "title": "תיקון מקדמות דמי ביטוח — טופס 672",
+          "summary": "טופס ציבורי לשינוי בסיס ההכנסה לחישוב מקדמות בשנה השוטפת. מיועד למקרים הרלוונטיים של עצמאים או הכנסה שלא מעבודה; אינו השגה כללית על חוב."
+        },
+        "uk": {
+          "title": "Зміна авансових страхових внесків — форма 672",
+          "summary": "Загальнодоступний бланк зміни дохідної бази авансових внесків поточного року. Для відповідних випадків самозайнятості чи доходів не від роботи; не загальне заперечення проти боргу."
+        }
+      },
+      "retrieval": {
+        "status": "verified",
+        "checkedAt": "2026-10-29T06:06:11.518Z",
+        "httpStatus": 200,
+        "contentType": "application/pdf",
+        "sha256": "658628b748528799bb6ec24f37c1d6a1e37a40744fe517e26605102ddcab5df7",
+        "bytes": 182902,
+        "localPath": "/official/files/658628b748528799bb6ec24f37c1d6a1e37a40744fe517e26605102ddcab5df7.pdf",
+        "sourceUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/Documents/t672.pdf",
+        "finalUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/Documents/t672.pdf",
+        "method": "public-pdf",
+        "change": "new",
+        "reviewStatus": "not-reviewed",
+        "observedTitle": null,
+        "sourceLastModified": null
+      },
+      "preview": {
+        "url": "/official/previews/658628b748528799bb6ec24f37c1d6a1e37a40744fe517e26605102ddcab5df7.webp",
+        "width": 480,
+        "height": 622,
+        "sourceSha256": "658628b748528799bb6ec24f37c1d6a1e37a40744fe517e26605102ddcab5df7"
+      }
+    },
+    {
+      "id": "tax-135-2025",
+      "kind": "form",
+      "issuer": "tax-authority",
+      "officialTitleHe": "טופס 135 - דין וחשבון מקוצר ליחיד שאינו חייב בהגשת הדוח אך מבקש החזר מס לשנת 2025",
+      "formNumber": "135",
+      "sourcePageUrl": "https://www.gov.il/he/service/itc135",
+      "downloadUrl": "https://www.gov.il/BlobFolder/service/reporting-and-payment-2025-annual-tax-report-for-individuals/he/Service_Pages_Income_tax_annual-report-2026_itc135-2025.pdf",
+      "relatedLetterSlugs": [
+        "hodaat-hekhzer-mas",
+        "drishat-hokhahat-hachnasa"
+      ],
+      "translations": {
+        "en": {
+          "title": "Tax refund application for 2025 — form 135",
+          "summary": "Public blank tax-return form for eligible refund applicants for tax year 2025. Select the correct tax year; this is an application, not a refund decision."
+        },
+        "ru": {
+          "title": "Заявление на возврат налога за 2025 год — форма 135",
+          "summary": "Общедоступный бланк сокращённой декларации для заявителей на возврат за налоговый 2025 год при соблюдении условий. Выбирайте нужный год; это заявление, а не решение о возврате."
+        },
+        "he": {
+          "title": "בקשה להחזר מס לשנת 2025 — טופס 135",
+          "summary": "טופס דוח מקוצר ריק לציבור למבקשי החזר הזכאים להשתמש בו לשנת המס 2025. יש לבחור את שנת המס המתאימה; זהו דוח להגשה ולא החלטה על החזר."
+        },
+        "uk": {
+          "title": "Заява на повернення податку за 2025 рік — форма 135",
+          "summary": "Загальнодоступний бланк скороченої декларації для заявників на повернення за податковий 2025 рік за дотримання умов. Обирайте потрібний рік; це заява, а не рішення про повернення."
+        }
+      },
+      "retrieval": {
+        "status": "verified",
+        "checkedAt": "2026-10-29T06:06:11.518Z",
+        "httpStatus": 200,
+        "contentType": "application/pdf",
+        "sha256": "207412d97ed3daa65f49d42ae7e68e62e67e1f0dba674be40962989f7c9ad0eb",
+        "bytes": 1337032,
+        "localPath": "/official/files/207412d97ed3daa65f49d42ae7e68e62e67e1f0dba674be40962989f7c9ad0eb.pdf",
+        "sourceUrl": "https://www.gov.il/BlobFolder/service/reporting-and-payment-2025-annual-tax-report-for-individuals/he/Service_Pages_Income_tax_annual-report-2026_itc135-2025.pdf",
+        "finalUrl": "https://www.gov.il/BlobFolder/service/reporting-and-payment-2025-annual-tax-report-for-individuals/he/Service_Pages_Income_tax_annual-report-2026_itc135-2025.pdf",
+        "method": "public-pdf",
+        "change": "new",
+        "reviewStatus": "not-reviewed",
+        "observedTitle": null,
+        "sourceLastModified": "Thu, 16 Jul 2026 14:06:43 GMT"
+      },
+      "preview": {
+        "url": "/official/previews/207412d97ed3daa65f49d42ae7e68e62e67e1f0dba674be40962989f7c9ad0eb.webp",
+        "width": 480,
+        "height": 679,
+        "sourceSha256": "207412d97ed3daa65f49d42ae7e68e62e67e1f0dba674be40962989f7c9ad0eb"
+      }
+    },
+    {
+      "id": "btl-insurance-period-certificate-info",
+      "kind": "certificate-info",
+      "issuer": "bituach-leumi",
+      "officialTitleHe": "אישור תקופות ביטוח ומעסיקים",
+      "formNumber": null,
+      "sourcePageUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/work_period_authorizations/Pages/default.aspx",
+      "downloadUrl": null,
+      "relatedLetterSlugs": [
+        "ishur-bituach"
+      ],
+      "translations": {
+        "en": {
+          "title": "Insurance periods and employers — certificate information",
+          "summary": "Official public description of the certificate and its recorded periods and employer details. An individual's issued certificate must be requested separately; no personal certificate is imported."
+        },
+        "ru": {
+          "title": "Периоды страхования и работодатели — информация о справке",
+          "summary": "Официальное публичное описание справки с учтёнными периодами и сведениями о работодателях. Персональная справка запрашивается отдельно и не импортируется."
+        },
+        "he": {
+          "title": "תקופות ביטוח ומעסיקים — מידע על האישור",
+          "summary": "תיאור רשמי לציבור של האישור, תקופות הביטוח ופרטי המעסיקים המופיעים בו. אישור אישי יש להזמין בנפרד; אישור של אדם מסוים אינו מיובא."
+        },
+        "uk": {
+          "title": "Періоди страхування та роботодавці — інформація про довідку",
+          "summary": "Офіційний публічний опис довідки з врахованими періодами та даними роботодавців. Персональна довідка замовляється окремо й не імпортується."
+        }
+      },
+      "retrieval": {
+        "status": "verified",
+        "checkedAt": "2026-10-29T06:06:11.518Z",
+        "httpStatus": 200,
+        "contentType": "text/html",
+        "sha256": "361b1dde1463585b15726afd24c6c42c10ef740ab1a87624bc4e1d60a3b4ea04",
+        "bytes": 126192,
+        "localPath": null,
+        "sourceUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/work_period_authorizations/Pages/default.aspx",
+        "finalUrl": "https://www.btl.gov.il/%D7%98%D7%A4%D7%A1%D7%99%D7%9D%20%D7%95%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/work_period_authorizations/Pages/default.aspx",
+        "method": "public-html",
+        "change": "new",
+        "reviewStatus": "not-reviewed",
+        "observedTitle": "תקופות עבודה - אישורים | ביטוח לאומי",
+        "sourceLastModified": null
+      }
+    },
+    {
+      "id": "btl-submit-documents-guide",
+      "kind": "guide",
+      "issuer": "bituach-leumi",
+      "officialTitleHe": "איך ניתן לשלוח לכם מסמכים?",
+      "formNumber": null,
+      "sourcePageUrl": "https://www.btl.gov.il/About/faq/TroubleShooting/FaqDoc/Pages/%D7%90%D7%99%D7%9A-%D7%A0%D7%99%D7%AA%D7%9F-%D7%9C%D7%A9%D7%9C%D7%95%D7%97-%D7%9C%D7%9B%D7%9D-%D7%9E%D7%A1%D7%9E%D7%9B%D7%99%D7%9D.aspx",
+      "downloadUrl": null,
+      "relatedLetterSlugs": [
+        "bakashat-mismachim-bituach"
+      ],
+      "translations": {
+        "en": {
+          "title": "How to submit documents to Bituach Leumi",
+          "summary": "Official public instructions for sending supporting documents. Use the document list and deadline in your own request; this page is not a personalised request."
+        },
+        "ru": {
+          "title": "Как отправить документы в Битуах Леуми",
+          "summary": "Официальная публичная инструкция по отправке подтверждающих документов. Список и срок берите из своего запроса; эта страница не является персональным требованием."
+        },
+        "he": {
+          "title": "שליחת מסמכים לביטוח הלאומי",
+          "summary": "הנחיות רשמיות לציבור לשליחת מסמכים תומכים. רשימת המסמכים והמועד נקבעים בבקשה שקיבלתם; הדף אינו דרישה אישית."
+        },
+        "uk": {
+          "title": "Як надіслати документи до Бітуах Леумі",
+          "summary": "Офіційна публічна інструкція з надсилання підтвердних документів. Список і строк беріть зі свого запиту; ця сторінка не є персональною вимогою."
+        }
+      },
+      "retrieval": {
+        "status": "verified",
+        "checkedAt": "2026-10-29T06:06:11.518Z",
+        "httpStatus": 200,
+        "contentType": "text/html",
+        "sha256": "afd02c2b92cefb616159047752f8652a45365347f399bc53528c2e235d3768e1",
+        "bytes": 139573,
+        "localPath": null,
+        "sourceUrl": "https://www.btl.gov.il/About/faq/TroubleShooting/FaqDoc/Pages/%D7%90%D7%99%D7%9A-%D7%A0%D7%99%D7%AA%D7%9F-%D7%9C%D7%A9%D7%9C%D7%95%D7%97-%D7%9C%D7%9B%D7%9D-%D7%9E%D7%A1%D7%9E%D7%9B%D7%99%D7%9D.aspx",
+        "finalUrl": "https://www.btl.gov.il/About/faq/TroubleShooting/FaqDoc/Pages/%D7%90%D7%99%D7%9A-%D7%A0%D7%99%D7%AA%D7%9F-%D7%9C%D7%A9%D7%9C%D7%95%D7%97-%D7%9C%D7%9B%D7%9D-%D7%9E%D7%A1%D7%9E%D7%9B%D7%99%D7%9D.aspx",
+        "method": "public-html",
+        "change": "new",
+        "reviewStatus": "not-reviewed",
+        "observedTitle": "איך ניתן לשלוח לכם מסמכים? - שליחת מסמכים | ביטוח לאומי",
+        "sourceLastModified": null
+      }
+    },
+    {
+      "id": "piba-biometric-id-renewal-guide",
+      "kind": "guide",
+      "issuer": "population-authority",
+      "officialTitleHe": "זימון תור והגשת בקשה לדרכון או לתעודת זהות ביומטריים בעמדות שירות דיגיטליות",
+      "formNumber": null,
+      "sourcePageUrl": "https://www.gov.il/he/service/application-for-biometric-passport-or-idcard",
+      "downloadUrl": null,
+      "relatedLetterSlugs": [
+        "chidush-teudat-zehut"
+      ],
+      "translations": {
+        "en": {
+          "title": "Biometric ID applications at digital service stations",
+          "summary": "Official public instructions about appointment and application routes at digital stations for eligible cases. Not a personal renewal notice or a blank renewal letter."
+        },
+        "ru": {
+          "title": "Биометрическое удостоверение — цифровые стойки обслуживания",
+          "summary": "Официальная публичная инструкция о записи и подаче заявления на цифровых стойках для подходящих случаев. Это не персональное уведомление о продлении и не шаблон письма."
+        },
+        "he": {
+          "title": "תעודת זהות ביומטרית — עמדות שירות דיגיטליות",
+          "summary": "הנחיות רשמיות לציבור על קביעת תור והגשת בקשה בעמדות דיגיטליות למקרים הזכאים לכך. אינו הודעת חידוש אישית או תבנית מכתב."
+        },
+        "uk": {
+          "title": "Біометричне посвідчення — цифрові стійки обслуговування",
+          "summary": "Офіційна публічна інструкція щодо запису й подання заяви на цифрових стійках для відповідних випадків. Це не персональне повідомлення про поновлення й не шаблон листа."
+        }
+      },
+      "retrieval": {
+        "status": "unavailable",
+        "checkedAt": "2026-10-29T06:06:11.518Z",
+        "httpStatus": 403,
+        "contentType": null,
+        "sha256": null,
+        "bytes": null,
+        "localPath": null,
+        "sourceUrl": "https://www.gov.il/he/service/application-for-biometric-passport-or-idcard",
+        "finalUrl": null,
+        "method": "public-html",
+        "change": "unavailable",
+        "reviewStatus": "not-reviewed",
+        "error": "HTTP 403"
+      }
+    }
+  ]
+}

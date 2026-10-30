@@ -1,0 +1,10 @@
+{
+  "title": "Your action checklist",
+  "privacy": "No registration. Progress is saved only in this browser on this device, separately for each letter type.",
+  "reset": "Clear completed actions",
+  "print": "Print checklist",
+  "progress": "completed",
+  "unavailable": "Browser storage is unavailable. Progress is kept while this checklist remains open.",
+  "empty": "No specific actions are listed for this letter.",
+  "notice": "Check your own letter for the exact deadline and instructions."
+}

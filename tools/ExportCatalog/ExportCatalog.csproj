@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="../../src/Mikhtav.Core/Content/*.json" LogicalName="Mikhtav.Content.%(Filename)%(Extension)" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <Compile Include="../../src/Mikhtav.Core/**/*.cs" Exclude="../../src/Mikhtav.Core/obj/**;../../src/Mikhtav.Core/bin/**" />
+    <Compile Include="../../src/Mikhtav.Infrastructure/Data/SeedData.cs" />
+  </ItemGroup>
+</Project>

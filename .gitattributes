@@ -1,0 +1,4 @@
+# Preserve exact downloaded bytes; checksums must survive checkouts on every OS.
+data/official/snapshots/** -text
+data/official/snapshots/*.pdf binary
+src/web/public/official/files/** binary

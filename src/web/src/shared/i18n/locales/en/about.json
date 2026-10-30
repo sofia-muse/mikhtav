@@ -1,0 +1,21 @@
+{
+  "title": "About Mikhtav",
+  "body": "Mikhtav explains common Israeli bureaucratic letters and links them to public official documents. The original PDFs are preserved unchanged; translated titles and explanations are editorial content. Forms and information pages are not personal notices. Verify your own letter with the issuing authority.",
+  "documents": "Official documents",
+  "purpose": {
+    "title": "Understand your next step",
+    "body": "Mikhtav helps newcomers understand common Israeli letters and prepare their next action. Compare the guide with the heading and sender on your own letter."
+  },
+  "originals": {
+    "title": "Originals and explanations",
+    "body": "Official documents are unchanged public originals. Translated titles, explanations and action lists are editorial guidance, not a translation of your personal notice."
+  },
+  "sources": {
+    "title": "How sources are used",
+    "body": "Each explanation links to supporting official sources with a check date. Document retrieval dates show when a file was obtained, not a professional review or a guarantee that it is current. Verify amounts and deadlines with the authority."
+  },
+  "progress": {
+    "title": "Your progress stays here",
+    "body": "Checklist marks are stored only in this browser. No account or upload is needed. Clearing browser data removes them; a changed action version starts a new checklist."
+  }
+}

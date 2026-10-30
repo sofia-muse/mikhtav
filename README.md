@@ -1,12 +1,12 @@
 # Mikhtav · Israeli Letters Explained
 
-> _Mikhtav_ (מכתב, "letter" in Hebrew) is a small bilingual web app that helps olim — and
+> _Mikhtav_ (מכתב, "letter" in Hebrew) is a multilingual web app that helps olim — and
 > anyone struggling with Hebrew bureaucratic mail — understand the official letters that arrive
 > from Israeli authorities. Pick a letter type, get a section-by-section explanation in
 > **English, Hebrew, Russian, or Ukrainian**, along with what action is required and the
 > deadline.
 
-**Educational information only.** Mikhtav does not republish any government data and is not
+**Educational information only.** Mikhtav preserves public official originals, imports no personal records, and is not
 legal advice. Verify your specific letter with the issuing authority.
 
 **Stack:** ASP.NET Core Web API (.NET 8) · Entity Framework Core · SQL Server · React +
@@ -16,9 +16,11 @@ TypeScript (Vite) · react-i18next with full RTL · xUnit · Vitest · GitHub Ac
 
 ## Architecture
 
-A layered backend behind a thin API, with per-language content stored in the database. The
-frontend picks one language per request; missing translations fall back to English so
-something always renders.
+A static public React application on Vercel and an optional .NET API share versioned,
+four-language editorial content. The frontend is organised into `app`, `features` and
+`shared`, with a common query cache, namespace translations and CSS Modules. The API
+and snapshot exporter use the same injectable `IEditorialCatalog` implementation.
+See [public architecture and release checks](docs/public-architecture.md).
 
 ```mermaid
 flowchart LR
@@ -54,7 +56,100 @@ flowchart LR
 
 ---
 
+## Public product workflow
+
+### Imported official originals
+
+`/documents` is a separate library of public official forms, PDF guides and information
+pages. It does not relabel blank application forms as incoming personal notices. Each entry
+has an original Hebrew title, four-language editorial metadata, official URLs and related
+letter guides. `?letter=<slug>` filters the library to a specific explanation.
+
+The curated registry is `data/official/manifest.json`. Run
+`node tools/official/import.mjs` from the repository root to fetch the registered public
+URLs. The current adapter uses direct HTTPS HTML/PDF downloads; no public outgoing-letter
+API was confirmed. There is no sign-in, private-account scraping or automatic form submission.
+The site reads the published JSON endpoint `/official/documents.json` rather than making
+cross-origin requests to authorities from each visitor's browser.
+
+The importer validates every redirect against exact public official hosts, limits streamed
+response sizes/timeouts, rejects HTML challenges disguised as PDFs, and stores unchanged
+response bytes with SHA-256. It archives HTML under `data/official/snapshots` only; HTML is
+never served as executable content. PDFs are also copied unchanged under
+`src/web/public/official/files`. HTTP errors are published as unavailable, with no pretend
+cached-original link. Earlier successful archives remain available for review. Each run
+records new/unchanged/changed/unavailable results and does not alter editorial review dates
+or guidance automatically. Raw HTML changes can be navigation or dynamic-token changes.
+
+On 2026-10-29, seven of eight resources were retrieved (five PDFs and two HTML pages);
+the biometric-ID information page returned HTTP 403. A retrieval timestamp is not a legal,
+professional translation or editorial approval. The first pages of all five PDFs were
+visually inspected; originals are not edited or filled by this application.
+
+Offline validation: `node tools/official/verify.mjs`. Transport regression tests:
+`node --test tools/official/transport.test.mjs`. CI runs both alongside the frontend tests.
+Reimport is an explicit command, not a recurring background service.
+
+First-page previews are generated separately with `python tools/official/previews.py`
+(Pillow and Poppler required). The command uses already saved PDFs, publishes 480px WebP
+images and links each preview to its source SHA-256. Originals are unchanged; missing
+previews are allowed. Preview generation and source import never run during Vercel builds.
+
+The public catalog includes a three-step letter finder (sender, original Hebrew heading,
+possible guides), a per-letter checklist and an official-source panel. The finder compares
+catalog headings; it does not authenticate notices or determine personal obligations.
+No personal documents are uploaded. Checklist progress lives in browser storage, keyed by
+letter slug and editorial version, and is invalidated when the action content changes.
+Printing produces a concise task list. Storage denial falls back to in-memory progress.
+
+### Editorial architecture
+
+`src/Mikhtav.Core/Content/translations.json` stores normalized language records separately
+from structural letter identities in SeedData. `EditorialCatalog` applies these records to
+the existing LetterService DTOs in both API responses and generated snapshots. Intentional
+null actions/deadlines suppress outdated seed text. This avoids adding database columns per
+language and creates a seam for a later editorial CMS. It is currently a versioned file
+catalog, not a database-backed admin system.
+
+`provenance.json` records each letter's version, official sources, source coverage and the date
+the links/content were checked. This date is not an independent legal or professional
+translation review. Some GOV pages blocked direct retrieval; provenance scopes document
+where official indexed content was used. Explanations are educational, and the reader must
+check their own notice for dates, amounts and applicable instructions.
+
+After changing content, run the exporter and `node tools/verify-catalog.mjs` from the repository
+root. The validator checks all four locale snapshots, section identity, completeness, index/detail
+parity and official-source metadata. Bump a letter's editorial version when its actions change.
+Frontend features live under `src/web/src/features/`; each owns behavior, styles and tests.
+
+Project skills are in `.agents/skills/mikhtav-content` and `.agents/skills/mikhtav-release`;
+reusable editor and UI-reviewer agent definitions are in `.cursor/agents/`.
+The next stage is an authenticated editor with drafts/review/publish, a persistent translation
+repository and server hosting; those services are not provisioned by this public release.
+
 ## Running it
+
+### Vercel / standalone catalog
+
+The frontend runs without a database or API by default. It reads versioned JSON snapshots
+of the existing editorial seed data from `src/web/public/catalog/` (7 letters and the glossary,
+in EN/HE/RU/UK, using the same translation fallbacks as the API). These are curated examples,
+not live authority data. Missing translations still fall back to English.
+
+Import the repository into Vercel with root directory `src/web` and framework Vite;
+`src/web/vercel.json` supports direct links to letter and glossary pages.
+Set `VITE_API_URL` at build time to use a separately hosted .NET API instead.
+
+After editing seed content, regenerate snapshots from the repository root with .NET 10:
+
+```bash
+dotnet run --project tools/ExportCatalog -- src/web/public/catalog
+```
+
+The exporter uses the actual `LetterService`, so guidance, severity and language fallback
+stay consistent with the backend. Generated JSON is committed; Vercel needs only Node.
+The catalog includes multilingual search and an action-required filter; the glossary supports
+Hebrew, transliteration and meaning search.
 
 Requires the .NET 8 SDK (or newer), SQL Server LocalDB (default), and Node 20+.
 

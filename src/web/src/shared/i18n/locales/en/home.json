@@ -1,0 +1,22 @@
+{
+  "title": "Received a letter in Hebrew?",
+  "intro": "Understand what it means and what to do next.",
+  "identify": "Identify my letter",
+  "searchLabel": "Search explanations and official documents",
+  "placeholder": "Title, Hebrew phrase, or authority…",
+  "common": "Four letters to start with",
+  "authorities": "Browse by authority",
+  "all": "All authorities",
+  "explanations": "Explanations",
+  "documents": "Official documents",
+  "empty": "No matches found",
+  "emptyBody": "Try a shorter phrase or choose a different authority.",
+  "clear": "Clear filters",
+  "action": "Only letters requiring action",
+  "results": "{{count}} matches",
+  "originals": "Looking for an official form?",
+  "originalsBody": "Original documents, public forms and guidance from the issuing authority.",
+  "openDocuments": "Browse official documents",
+  "source": "Official source",
+  "backgroundError": "Updates are temporarily unavailable. Previously loaded information remains visible."
+}
