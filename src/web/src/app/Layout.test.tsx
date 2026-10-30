@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { Layout } from './Layout'
@@ -17,7 +17,8 @@ describe('site language and navigation', () => {
     expect(initialLanguage('', null, ['de'])).toBe('en')
   })
   it('preserves filters and persists manual language selection with RTL', async () => {
-    setup(); await userEvent.selectOptions(screen.getByRole('combobox'), 'he')
+    setup(); expect(within(screen.getByRole('navigation')).queryByRole('combobox')).toBeNull()
+    await userEvent.selectOptions(screen.getByRole('combobox'), 'he')
     expect(screen.getByTestId('location')).toHaveTextContent('q=tax&lang=he')
     expect(localStorage.getItem('mikhtav:language')).toBe('he')
     expect(document.documentElement.dir).toBe('rtl')

@@ -18,12 +18,6 @@ export function Layout() {
     menu.current?.querySelector<HTMLAnchorElement>('a')?.focus()
     function keydown(event: KeyboardEvent) {
       if (event.key === 'Escape') { setOpen(false); trigger.current?.focus() }
-      if (event.key === 'Tab') {
-        const items = Array.from(menu.current?.querySelectorAll<HTMLElement>('a,select') ?? [])
-        const first = items[0], last = items[items.length - 1]
-        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); trigger.current?.focus() }
-        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); trigger.current?.focus() }
-      }
     }
     document.addEventListener('keydown', keydown)
     return () => document.removeEventListener('keydown', keydown)
@@ -45,13 +39,17 @@ export function Layout() {
     <a className={styles.skip} href="#main">{t('skip')}</a>
     <header className={styles.header}>
       <AppLink to="/" className={styles.brand} aria-label="Mikhtav">mikhtav<span aria-hidden="true">.</span></AppLink>
-      <button ref={trigger} type="button" aria-expanded={open} aria-controls="site-navigation" onClick={() => setOpen(value => !value)} className={styles.mobileTrigger}>{t('menu')}</button>
+
       <nav ref={menu} id="site-navigation" className={`${styles.navigation} ${open ? styles.open : ''}`} aria-label={t('navigation')}>
         {([['/', 'letters'], ['/documents', 'documents'], ['/glossary', 'glossary']] as const).map(([path, key]) => <AppLink key={path} to={path} onClick={() => setOpen(false)} aria-current={location.pathname === path ? 'page' : undefined}>{t(`nav.${key}`)}</AppLink>)}
+
+      </nav>
+      <div className={styles.headerActions}>
         <label className={styles.language}><span className={styles.srOnly}>{t('language')}</span><select value={localeOf(i18n.language)} onChange={event => switchLanguage(event.target.value)} aria-label={t('language')}>
           {LOCALES.map(locale => <option key={locale} value={locale} lang={locale}>{{ en: 'English', he: 'עברית', ru: 'Русский', uk: 'Українська' }[locale]}</option>)}
         </select></label>
-      </nav>
+        <button ref={trigger} type="button" aria-expanded={open} aria-controls="site-navigation" onClick={() => setOpen(value => !value)} className={styles.mobileTrigger}>{t('menu')}</button>
+      </div>
     </header>
     <main id="main" className={styles.main}><Outlet /></main>
     <footer className={styles.footer}><div><AppLink to="/" className={styles.footerBrand}>mikhtav.</AppLink><p>{t('tagline')}</p></div><p>{t('disclaimer')}</p><AppLink to="/about">{t('nav.about')}</AppLink></footer>

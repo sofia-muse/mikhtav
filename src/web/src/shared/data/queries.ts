@@ -9,7 +9,7 @@ export function useLetterIndex() {
 }
 export function useLetter(slug: string) {
   const { i18n } = useTranslation(); const lang = localeOf(i18n.language)
-  return useQuery({ queryKey: ['letter', lang, slug], queryFn: ({ signal }) => catalogClient.letter(slug, lang, signal) }, queryClient)
+  return useQuery({ queryKey: ['letter', lang, slug], enabled: Boolean(slug), queryFn: ({ signal }) => catalogClient.letter(slug, lang, signal) }, queryClient)
 }
 export function useGlossary() {
   const { i18n } = useTranslation(); const lang = localeOf(i18n.language)

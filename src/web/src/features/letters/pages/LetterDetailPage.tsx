@@ -52,7 +52,8 @@ function LetterContent({ letter }: { letter: LetterDetail }) {
       </dl>
       <p className={styles.reminder}>{t('verifyReminder', { issuer: letter.issuer })}</p>
     </Card></section>
-    <div className={styles.checklist}><LetterChecklist letter={letter} /></div>
+    <a className={styles.checklistJump} href="#letter-checklist">✓ {t('jumpToChecklist')}</a>
+    <div id="letter-checklist" tabIndex={-1} className={styles.checklist}><LetterChecklist letter={letter} /></div>
     <RelatedDocuments slug={letter.slug} />
     <section className={styles.sections} aria-labelledby="letter-sections-title">
       <h2 id="letter-sections-title">{t('sections')}</h2>

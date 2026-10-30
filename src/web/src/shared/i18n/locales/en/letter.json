@@ -37,5 +37,6 @@
   "documentsLoading": "Loading related documents…",
   "official": "Official source",
   "refreshError": "The guide could not be refreshed. Showing the previously loaded version.",
-  "documentsRefreshError": "Related documents could not be refreshed. Showing the previously loaded list."
+  "documentsRefreshError": "Related documents could not be refreshed. Showing the previously loaded list.",
+  "jumpToChecklist": "Go to action checklist"
 }

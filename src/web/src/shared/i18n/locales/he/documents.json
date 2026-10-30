@@ -38,5 +38,11 @@
     "bituach-leumi": "המוסד לביטוח לאומי",
     "tax-authority": "רשות המסים בישראל",
     "population-authority": "רשות האוכלוסין וההגירה"
-  }
+  },
+  "relatedTitle": "מסמכים למכתב הזה",
+  "backToGuide": "חזרה להסבר",
+  "shortIntro": "טפסים מקוריים והנחיות רשמיות, עם הסבר קצר על מטרתם.",
+  "searchHint": "כותרת, מספר טופס או רשות…",
+  "filters": "סינון",
+  "openPdf": "פתיחת PDF"
 }

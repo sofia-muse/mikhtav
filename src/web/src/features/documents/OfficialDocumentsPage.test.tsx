@@ -16,6 +16,22 @@ function setup(documents: OfficialDocument[], path = '/documents') {
 }
 afterEach(() => { cleanup(); vi.unstubAllGlobals() })
 describe('official document catalog', () => {
+  it('shows letter context and preserves it when clearing document filters', async () => {
+    const guide = { slug: 'income-guide', name: 'Debt notice', issuer: 'National Insurance Institute', sections: [], guidance: {} }
+    const other = { ...document, id: 'unrelated', relatedLetterSlugs: ['other'] }
+    vi.stubGlobal('fetch', vi.fn(async (url) => ({ ok: true, json: async () => String(url).includes('/official/') ? { schemaVersion: 1, documents: [document, other] } : guide })))
+    render(<MemoryRouter initialEntries={['/documents?letter=income-guide&q=missing&lang=en']}><OfficialDocumentsPage /></MemoryRouter>)
+    expect(await screen.findByText('Debt notice')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: 'Documents for this letter' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /Back to explanation/ })).toHaveAttribute('href', '/letters/income-guide?lang=en')
+    await userEvent.click(screen.getByRole('button', { name: 'Clear filters' }))
+    expect(await screen.findAllByRole('heading', { name: 'Income form' })).toHaveLength(1)
+    expect(screen.getByRole('heading', { level: 1, name: 'Documents for this letter' })).toBeInTheDocument()
+    const filters = screen.getByRole('button', { name: 'Filters' })
+    expect(filters).toHaveAttribute('aria-expanded', 'false')
+    await userEvent.click(filters)
+    expect(filters).toHaveAttribute('aria-expanded', 'true')
+  })
   it('uses only a preview tied to the original PDF hash and exposes dimensions', async () => {
     const digest = 'a'.repeat(64)
     setup([{ ...document, retrieval: { ...document.retrieval, sha256: digest }, preview: { url: `/official/previews/${digest}.webp`, width: 480, height: 679, sourceSha256: digest } }])
@@ -25,13 +41,13 @@ describe('official document catalog', () => {
     expect(image).toHaveAttribute('width', '480')
     expect(image).toHaveAttribute('height', '679')
     expect(image).toHaveAttribute('loading', 'lazy')
-    expect(screen.getByRole('link', { name: /View original/ })).toHaveAttribute('target', '_blank')
+    expect(screen.getByRole('link', { name: /Open PDF/ })).toHaveAttribute('target', '_blank')
   })
   it('renders real source and saved original provenance without implying editorial verification', async () => {
     setup([document])
     expect(await screen.findByRole('heading', { name: 'Income form' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /Official source/ })).toHaveAttribute('href', document.sourcePageUrl)
-    expect(screen.getByRole('link', { name: /View original/ })).toHaveAttribute('href', '/official/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.pdf')
+    expect(screen.getByRole('link', { name: /Open PDF/ })).toHaveAttribute('href', '/official/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.pdf')
     expect(screen.getByText(/does not mean the content has been editorially reviewed/)).toBeInTheDocument()
     expect(screen.getByText('דיווח הכנסות')).toHaveAttribute('lang', 'he')
     expect(within(screen.getByRole('article')).getByText(/National Insurance Institute/)).toBeInTheDocument()
@@ -39,7 +55,7 @@ describe('official document catalog', () => {
   it('never offers a cached original for an unavailable entry, even with stale cache metadata', async () => {
     setup([{ ...document, retrieval: { ...document.retrieval, status: 'unavailable' } }])
     expect(await screen.findByText('Original not retrieved')).toBeInTheDocument()
-    expect(screen.queryByRole('link', { name: /View original/ })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: /Open PDF/ })).not.toBeInTheDocument()
     expect(screen.getByRole('link', { name: /Official source/ })).toBeInTheDocument()
   })
   it('searches Hebrew and form numbers, filters kinds and clears empty results', async () => {
@@ -81,6 +97,6 @@ describe('official document catalog', () => {
   it('accepts exact official hosts and standard HTTPS port', async () => {
     setup([{ ...document, sourcePageUrl: 'https://btl.gov.il:443/form', downloadUrl: 'https://gov.il/form.pdf' }])
     expect(await screen.findByRole('link', { name: /Official source/ })).toHaveAttribute('href', 'https://btl.gov.il:443/form')
-    expect(screen.getByRole('link', { name: /View original/ })).toHaveAttribute('href', document.retrieval.localPath)
+    expect(screen.getByRole('link', { name: /Open PDF/ })).toHaveAttribute('href', document.retrieval.localPath)
   })
 })
