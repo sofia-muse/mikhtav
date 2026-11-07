@@ -1,5 +1,15 @@
 # Mikhtav · Israeli Letters Explained
 
+## Current status · 7 November 2026
+
+**Live app:** [Open Mikhtav](https://mikhtav.vercel.app/). Vercel reports the production deployment as READY. The catalog and Annual Tax Demand Notice explanation loaded successfully, including guidance and a browser-local action checklist. The live catalog includes four letter types, authority filters, search, letter identification and official-document links. [Vercel project](https://vercel.com/sofia-muses-projects/mikhtav).
+
+![Live Mikhtav home page](docs/screenshots/mikhtav-live.jpg)
+
+![Live letter explanation and action checklist](docs/screenshots/mikhtav-letter.jpg)
+
+Captures from 7 November 2026; existing portfolio captures are explicitly labeled above.
+
 > _Mikhtav_ (מכתב, "letter" in Hebrew) is a small bilingual web app that helps olim — and
 > anyone struggling with Hebrew bureaucratic mail — understand the official letters that arrive
 > from Israeli authorities. Pick a letter type, get a section-by-section explanation in
@@ -143,10 +153,12 @@ These are the choices I'd defend in a review — no metrics I can't measure, jus
 - [ ] Ukrainian translations for the seeded content
 - [ ] More letter types: Misrad HaPnim (teudat zehut renewal), Misrad HaBriut (TIPAT HALAV),
       Bituach Leumi (maternity benefit), Education ministry (school enrolment)
-- [ ] Search across letter titles, section labels, and glossary
+- [x] Live catalog search and letter identification
+- [ ] Expanded search across all section labels and glossary content
 - [ ] Arabic locale
 - [ ] Letter-type submission form so olim can request new explainers
-- [ ] Deploy to Azure (App Service + Azure SQL + Static Web Apps)
+- [x] Publish the web frontend on Vercel
+- [ ] Verify and document production backend hosting separately
 
 ---
 
